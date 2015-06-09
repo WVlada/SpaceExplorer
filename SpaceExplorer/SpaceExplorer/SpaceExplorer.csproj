@@ -110,6 +110,8 @@
     <Compile Include="Engine\Enemy.cs" />
     <Compile Include="Engine\GameNode.cs" />
     <Compile Include="Engine\Node.cs" />
+    <Compile Include="Engine\Particle.cs" />
+    <Compile Include="Engine\ParticleEngine.cs" />
     <Compile Include="Engine\Sprite.cs" />
     <Compile Include="Engine\SpriteSheet.cs" />
     <Compile Include="Engine\Statistika.cs" />
@@ -119,6 +121,7 @@
     <Compile Include="Game\Player.cs" />
     <Compile Include="Game\PlayerShip.cs" />
     <Compile Include="Game\Ship.cs" />
+    <Compile Include="Game\ShipEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />

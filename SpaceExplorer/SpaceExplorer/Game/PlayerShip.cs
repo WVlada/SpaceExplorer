@@ -9,6 +9,8 @@ namespace SpaceExplorer.Game
     {
         public static List<GameNode> PlayerShips = new List<GameNode>();
 
+        public ShipEngine shipEngine;
+
         public PlayerShip(SpriteSheet spriteSheet)
             : base(spriteSheet)
         {
@@ -17,6 +19,8 @@ namespace SpaceExplorer.Game
             this.Health = Config.PlayerShipHealth;
             this.Position = Config.PlayerShipSpawnPosition;
             this.CollisionList = new List<GameNode>();
+
+            this.shipEngine = new ShipEngine(Config.PlayerShipEngine);
         }
 
     }

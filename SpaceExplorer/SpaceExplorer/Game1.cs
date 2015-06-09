@@ -19,7 +19,9 @@ namespace SpaceExplorer
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Sprite TestSprite;
-
+        
+        ParticleEngine particleEngine;
+        
         bool j;
 
         public Game1()
@@ -28,6 +30,7 @@ namespace SpaceExplorer
             Content.RootDirectory = "Content";
             graphics.PreferredBackBufferHeight = Config.Screen_Height;
             graphics.PreferredBackBufferWidth = Config.Screen_Width;
+            this.IsMouseVisible = true;
         }
 
         protected override void Initialize()
@@ -47,8 +50,16 @@ namespace SpaceExplorer
 
             Level.UcitajPozadinu(this.Content);
             Level.UcitajNeprijatelje();
-            
-        }
+
+
+            // particle engine
+            List<Texture2D> textures = new List<Texture2D>();
+            textures.Add(Content.Load<Texture2D>("circle"));
+            textures.Add(Content.Load<Texture2D>("star"));
+            textures.Add(Content.Load<Texture2D>("diamond"));
+            textures.Add(Content.Load<Texture2D>("dot"));
+            particleEngine = new ParticleEngine(textures, new Vector2(400, 240));
+         }
 
         protected override void UnloadContent()
         {
@@ -79,6 +90,8 @@ namespace SpaceExplorer
                 if (g > 0) { j = true; } else { j = false; };
                 // DOKLE GOD JE U PETLJI ON NE MOZE DA IZADJE
             }
+            particleEngine.EmitterLocation = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
+            particleEngine.Update();
             
         }
 
@@ -99,6 +112,8 @@ namespace SpaceExplorer
 
             Statistika.NacrtajFontove(spriteBatch, gameTime);
             spriteBatch.End();
+            
+            particleEngine.Draw(spriteBatch);
             
             base.Draw(gameTime);
         }
