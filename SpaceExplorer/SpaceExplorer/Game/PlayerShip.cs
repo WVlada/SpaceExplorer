@@ -10,6 +10,7 @@ namespace SpaceExplorer.Game
         public static List<GameNode> PlayerShips = new List<GameNode>();
 
         public ShipEngine shipEngine;
+        public ShipHealthBar shipHealthBar;
 
         public PlayerShip(SpriteSheet spriteSheet)
             : base(spriteSheet)
@@ -21,6 +22,7 @@ namespace SpaceExplorer.Game
             this.CollisionList = new List<GameNode>();
 
             this.shipEngine = new ShipEngine(Config.PlayerShipEngine);
+            this.shipHealthBar = new ShipHealthBar(Config.ShipHealthBar);
         }
 
     }

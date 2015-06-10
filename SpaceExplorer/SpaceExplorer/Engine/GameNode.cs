@@ -7,7 +7,7 @@ namespace SpaceExplorer.Engine
 {
     class GameNode : Node
     {
-        public int Health;
+        public double Health;
         public List<GameNode> CollisionList;//nije static! nego svako ima svoju
         Timer hitTimer;
         public SpriteSheet ExplosionSpriteSheet;

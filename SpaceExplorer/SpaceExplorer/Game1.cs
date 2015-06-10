@@ -75,9 +75,7 @@ namespace SpaceExplorer
             Timer.Update(gameTime);
             
             Node.UpdateNodes(gameTime);
-            Player.ProcessInput();
-            
-            base.Update(gameTime);
+            Player.ProcessInput(); 
             
             // Provera sudara
             int g = 0;

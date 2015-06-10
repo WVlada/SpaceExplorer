@@ -21,6 +21,7 @@ namespace SpaceExplorer.Game
         public static SpriteSheet PlanetSpriteSheet = new SpriteSheet("planet1", 5, 4, 15, 19, SpriteSheetMode.Normalan);
 
         public static SpriteSheet PlayerShipEngine = new SpriteSheet("engine", 1,1,5,1, SpriteSheetMode.Normalan);
+        public static SpriteSheet ShipHealthBar = new SpriteSheet("dot", 1, 1, 1, 1, SpriteSheetMode.Normalan);
         
 
         public static SpriteSheet[] ShipSpriteSheets = new SpriteSheet[]
