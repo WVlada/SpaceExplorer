@@ -15,7 +15,7 @@ namespace SpaceExplorer.Engine
         static SpriteFont protekloVreme;
         static SpriteFont enemyNodovi;
         static SpriteFont koJeUListi;
-        static SpriteFont distance;
+        static SpriteFont health;
         
         
         public static void UcitajFontove(ContentManager content)
@@ -24,7 +24,7 @@ namespace SpaceExplorer.Engine
                 protekloVreme    = content.Load<SpriteFont>("Tahoma");
                 enemyNodovi = content.Load<SpriteFont>("Tahoma");
                 koJeUListi = content.Load<SpriteFont>("Tahoma");
-                distance = content.Load<SpriteFont>("Tahoma");
+                health = content.Load<SpriteFont>("Tahoma");
                 
             }
         public static void NacrtajFontove(SpriteBatch spriteBatch, GameTime gametime)
@@ -43,8 +43,7 @@ namespace SpaceExplorer.Engine
                 spriteBatch.DrawString(koJeUListi, String.Format("Playerova Collision Lista: {0},{1},{2}", node.ToString(), node.Sprite.Origin.X + node.Position.X, node.Sprite.Origin.Y + node.Position.Y), new Vector2(0, y), Color.Orange, 0f, new Vector2(0, 0), 0.8f, SpriteEffects.None, 0f);
                 y += 20;
             }
-            spriteBatch.DrawString(distance, String.Format("Distance {0}", Vector2.Distance(PlayerShip.PlayerShips[0].Position, Node.Nodes[1].Position).ToString()), new Vector2(0, 500), Color.Orange, 0f, new Vector2(0, 0), 0.8f, SpriteEffects.None, 0f);
-            
+            spriteBatch.DrawString(health, String.Format("Health:{0}", PlayerShip.PlayerShips[0].Health), new Vector2(600f, 20), Color.Red, 0f, new Vector2(0, 0), 0.8f, SpriteEffects.None, 0f);
         }
     }
 }

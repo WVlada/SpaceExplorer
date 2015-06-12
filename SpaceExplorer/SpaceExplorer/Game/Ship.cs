@@ -10,6 +10,5 @@ namespace SpaceExplorer.Game
         public Ship(SpriteSheet spriteSheet) : base(spriteSheet) 
         { }
         
-
     }
 }

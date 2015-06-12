@@ -79,15 +79,15 @@ namespace SpaceExplorer
             
             // Provera sudara
             int g = 0;
-            for (int i = 0; i < PlayerShip.PlayerShips[0].CollisionList.Count; i++)
-            {
+            //for (int i = 0; i < PlayerShip.PlayerShips[0].CollisionList.Count; i++)
+            //{
                 
-                bool m = Node.CheckCollision(PlayerShip.PlayerShips[0], PlayerShip.PlayerShips[0].CollisionList[i]);
-                if (m == true) { g += 1; }
-                else { };
-                if (g > 0) { j = true; } else { j = false; };
-                // DOKLE GOD JE U PETLJI ON NE MOZE DA IZADJE
-            }
+            //    bool m = Node.CheckCollision(PlayerShip.PlayerShips[0], PlayerShip.PlayerShips[0].CollisionList[i]);
+            //    if (m == true) { g += 1; }
+            //    else { };
+            //    if (g > 0) { j = true; } else { j = false; };
+            //    // DOKLE GOD JE U PETLJI ON NE MOZE DA IZADJE
+            //}
             particleEngine.EmitterLocation = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
             particleEngine.Update();
             

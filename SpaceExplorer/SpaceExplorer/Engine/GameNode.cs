@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
+using SpaceExplorer.Game;
 
 namespace SpaceExplorer.Engine
 {
@@ -26,6 +28,17 @@ namespace SpaceExplorer.Engine
             this.Sprite.TextureIndex = 0;
             this.hitTimer.Stop();
         }
-        
+        public virtual void TakeDamage(double iznosStete)
+        {
+            this.Health -= iznosStete;
+            if (this.Health <= 0)
+            {this.Remove();}
+        }
+        public void Remove()
+        {
+            Node.Nodes.Remove(this);
+            PlayerShip.PlayerShips[0].CollisionList.Remove(this);
+           
+        }
     }
 }

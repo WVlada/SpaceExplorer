@@ -18,9 +18,9 @@ namespace SpaceExplorer.Engine
         { this.Move(this.Direction * this.Speed); this.Sprite.Update(gameTime); }
         public virtual void Draw(SpriteBatch spriteBatch)
             { this.Sprite.Draw(spriteBatch, this.position); }
-        public virtual void Remove()
-        { this.dead = true;
-            foreach (Node nod in this.children) { nod.Remove(); }  }
+        //public virtual void Remove()
+        //{ this.dead = true;
+        //    foreach (Node nod in this.children) { nod.Remove(); }  }
         public static void RemoveDead()
         {
             for (int i = Nodes.Count - 1; i >= 0; i--)
