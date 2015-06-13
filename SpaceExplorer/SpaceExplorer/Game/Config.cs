@@ -30,7 +30,7 @@ namespace SpaceExplorer.Game
             new SpriteSheet("spaceship",1,1,30,1,SpriteSheetMode.Normalan),
             new SpriteSheet("spaceship",1,1,30,1,SpriteSheetMode.Normalan),
         };
-        
 
+        public static SpriteSheet AsteroidExplosionSpriteSheet = new SpriteSheet("asteroideksplozija", 5, 4, 17, 30, SpriteSheetMode.BezTekstureZaStetu);
     }
 }

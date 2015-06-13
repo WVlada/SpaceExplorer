@@ -10,6 +10,7 @@ namespace SpaceExplorer.Engine
         int frame;
         double frameTimeRemaining;
         uint textureIndex;
+        public event NotifyHandler KrajLoopa;
 
         public Vector2 Origin;
         public int Width { get { return this.sheet.TileWidth; } }
@@ -32,6 +33,11 @@ namespace SpaceExplorer.Engine
                     if (this.frame >= this.sheet.FrameCount)
                         {
                             this.frame = 0;
+                            
+                            if (this.KrajLoopa != null)
+                            { this.KrajLoopa(); }
+                            //ako postoji registrovan risiver, pokreni metod}
+                            //a risiver registrujem u trenutku stvaranja eksplozije
                         }
                     this.frameTimeRemaining = this.sheet.FrameInterval;    
                 }

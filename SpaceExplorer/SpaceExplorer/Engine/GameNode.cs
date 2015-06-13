@@ -13,6 +13,7 @@ namespace SpaceExplorer.Engine
         public List<GameNode> CollisionList;//nije static! nego svako ima svoju
         Timer hitTimer;
         public SpriteSheet ExplosionSpriteSheet;
+        
 
         static Random randomBroj = new Random();
 
@@ -32,13 +33,19 @@ namespace SpaceExplorer.Engine
         {
             this.Health -= iznosStete;
             if (this.Health <= 0)
-            {this.Remove();}
+            { this.Explode(); this.Remove(); }
+        }
+        public virtual void Explode()
+        {
+             if (this.ExplosionSpriteSheet != null)
+               { 
+                    new EffectNode(this.ExplosionSpriteSheet, this.Position); 
+               }
         }
         public void Remove()
         {
             Node.Nodes.Remove(this);
             PlayerShip.PlayerShips[0].CollisionList.Remove(this);
-           
         }
     }
 }
