@@ -39,7 +39,7 @@ namespace SpaceExplorer.Engine
         {
              if (this.ExplosionSpriteSheet != null)
                { 
-                    new EffectNode(this.ExplosionSpriteSheet, this.Position); 
+                    new EffectNode(this.ExplosionSpriteSheet, this.Position, this); 
                }
         }
         public void Remove()
