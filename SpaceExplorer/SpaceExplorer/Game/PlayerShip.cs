@@ -11,7 +11,7 @@ namespace SpaceExplorer.Game
 
         public ShipEngine shipEngine;
         public ShipHealthBar shipHealthBar;
-
+        
         public PlayerShip(SpriteSheet spriteSheet)
             : base(spriteSheet)
         {
@@ -23,6 +23,7 @@ namespace SpaceExplorer.Game
 
             this.shipEngine = new ShipEngine(Config.PlayerShipEngine);
             this.shipHealthBar = new ShipHealthBar(Config.ShipHealthBar);
+            this.ExplosionSpriteSheet = Config.PlayerShipExplosionSpriteSheet;
         }
         
         public override void Update(GameTime gameTime)
@@ -50,6 +51,13 @@ namespace SpaceExplorer.Game
         // znaci ne mogu i GameNode i PlayerShip da imaju TakeDamage metod, tome sluzi VIRTUAL metod
         {
             this.Health -= iznosStete;
+            if (this.Health <= 0)
+            { this.Explode(); PlayerShip.PlayerShips.Remove(this); 
+              Nodes.Remove(this); Nodes.Remove(this.shipHealthBar); 
+              Nodes.Remove(this.shipEngine); this.CollisionList.Clear(); 
+            // moram sve poskidati, jer dobijam index out of range - svi ovi nodovi
+            // zavise od polozaja playershipa za crtanje, a njega vise nema
+            }
         }
     }
 }

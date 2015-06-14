@@ -17,16 +17,20 @@ namespace SpaceExplorer.Game
         {
             Enemy one = new Enemy(Config.AsteroidSpriteSheet);
             one.Position = new Vector2(650, 150);
-            one.Health = 10;
+            one.Health = 60;
             one.ExplosionSpriteSheet = Config.AsteroidExplosionSpriteSheet;
             Enemy two = new Enemy(Config.AsteroidSpriteSheet);
             two.Position = new Vector2(400, 200);
-            two.Health = 10;
+            two.Health = 60;
             two.ExplosionSpriteSheet = Config.AsteroidExplosionSpriteSheet;
             Enemy three = new Enemy(Config.PlanetSpriteSheet);
             three.Position = new Vector2(600, 400);
-            three.Health = 10;
+            three.Health = 60;
             three.ExplosionSpriteSheet = Config.AsteroidExplosionSpriteSheet;
+            Enemy four = new Enemy(Config.PlanetSpriteSheet);
+            four.Position = new Vector2(600, 400);
+            four.Health = 60;
+            four.ExplosionSpriteSheet = Config.AsteroidExplosionSpriteSheet;
         }
 
         public static void UcitajPozadinu(ContentManager content)

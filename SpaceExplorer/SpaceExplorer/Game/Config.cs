@@ -32,5 +32,6 @@ namespace SpaceExplorer.Game
         };
 
         public static SpriteSheet AsteroidExplosionSpriteSheet = new SpriteSheet("asteroideksplozija", 5, 4, 17, 30, SpriteSheetMode.BezTekstureZaStetu);
+        public static SpriteSheet PlayerShipExplosionSpriteSheet = new SpriteSheet("playershipeksplozija", 3, 4, 12, 30, SpriteSheetMode.BezTekstureZaStetu);
     }
 }

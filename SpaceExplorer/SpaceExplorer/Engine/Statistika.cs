@@ -29,21 +29,24 @@ namespace SpaceExplorer.Engine
             }
         public static void NacrtajFontove(SpriteBatch spriteBatch, GameTime gametime)
         {
-            spriteBatch.DrawString(brojNeprijatelja, String.Format("Nodes:{0}, Enemies {1}", Node.Nodes.Count, Enemy.Nodes.Count), new Vector2(600f, 0), Color.Red,0f, new Vector2(0, 0), 0.8f, SpriteEffects.None, 0f);
+            spriteBatch.DrawString(brojNeprijatelja, String.Format("Nodes:{0}, Enemies {1}", Node.Nodes.Count, Enemy.Nodes.Count), new Vector2(600f, 0), Color.Red, 0f, new Vector2(0, 0), 0.8f, SpriteEffects.None, 0f);
             spriteBatch.DrawString(protekloVreme, String.Format("Vreme {0}", gametime.TotalGameTime), new Vector2(0, 0), Color.Orange, 0f, new Vector2(0, 0), 0.8f, SpriteEffects.None, 0f);
             int x = 30;
             int y = 400;
             foreach (Node node in Enemy.Nodes)
             {
-                spriteBatch.DrawString(enemyNodovi, String.Format("Svi nodovi: {0},{1},{2},{3},{4}", node.ToString(), node.Position.ToString(), node.Sprite.FrameBounds.Y, node.Sprite.Origin.X + node.Position.X, node.Sprite.Origin.Y+node.Position.Y), new Vector2(0, x), Color.Orange, 0f, new Vector2(0, 0), 0.8f, SpriteEffects.None, 0f);
+                spriteBatch.DrawString(enemyNodovi, String.Format("Svi nodovi: {0},{1},{2},{3},{4}", node.ToString(), node.Position.ToString(), node.Sprite.FrameBounds.Y, node.Sprite.Origin.X + node.Position.X, node.Sprite.Origin.Y + node.Position.Y), new Vector2(0, x), Color.Orange, 0f, new Vector2(0, 0), 0.8f, SpriteEffects.None, 0f);
                 x += 20;
             }
-            foreach (Node node in PlayerShip.PlayerShips[0].CollisionList)
+            if (PlayerShip.PlayerShips.Count > 0)
             {
-                spriteBatch.DrawString(koJeUListi, String.Format("Playerova Collision Lista: {0},{1},{2}", node.ToString(), node.Sprite.Origin.X + node.Position.X, node.Sprite.Origin.Y + node.Position.Y), new Vector2(0, y), Color.Orange, 0f, new Vector2(0, 0), 0.8f, SpriteEffects.None, 0f);
-                y += 20;
+                foreach (Node node in PlayerShip.PlayerShips[0].CollisionList)
+                {
+                    spriteBatch.DrawString(koJeUListi, String.Format("Playerova Collision Lista: {0},{1},{2}", node.ToString(), node.Sprite.Origin.X + node.Position.X, node.Sprite.Origin.Y + node.Position.Y), new Vector2(0, y), Color.Orange, 0f, new Vector2(0, 0), 0.8f, SpriteEffects.None, 0f);
+                    y += 20;
+                }
+                spriteBatch.DrawString(health, String.Format("Health:{0}", PlayerShip.PlayerShips[0].Health), new Vector2(600f, 20), Color.Red, 0f, new Vector2(0, 0), 0.8f, SpriteEffects.None, 0f);
             }
-            spriteBatch.DrawString(health, String.Format("Health:{0}", PlayerShip.PlayerShips[0].Health), new Vector2(600f, 20), Color.Red, 0f, new Vector2(0, 0), 0.8f, SpriteEffects.None, 0f);
         }
     }
 }
