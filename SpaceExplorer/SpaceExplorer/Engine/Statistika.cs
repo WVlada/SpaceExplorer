@@ -16,6 +16,7 @@ namespace SpaceExplorer.Engine
         static SpriteFont enemyNodovi;
         static SpriteFont koJeUListi;
         static SpriteFont health;
+        static SpriteFont ugao;
         
         
         public static void UcitajFontove(ContentManager content)
@@ -25,12 +26,14 @@ namespace SpaceExplorer.Engine
                 enemyNodovi = content.Load<SpriteFont>("Tahoma");
                 koJeUListi = content.Load<SpriteFont>("Tahoma");
                 health = content.Load<SpriteFont>("Tahoma");
+                ugao = content.Load<SpriteFont>("Tahoma");
                 
             }
         public static void NacrtajFontove(SpriteBatch spriteBatch, GameTime gametime)
         {
             spriteBatch.DrawString(brojNeprijatelja, String.Format("Nodes:{0}, Enemies {1}", Node.Nodes.Count, Enemy.Nodes.Count), new Vector2(600f, 0), Color.Red, 0f, new Vector2(0, 0), 0.8f, SpriteEffects.None, 0f);
             spriteBatch.DrawString(protekloVreme, String.Format("Vreme {0}", gametime.TotalGameTime), new Vector2(0, 0), Color.Orange, 0f, new Vector2(0, 0), 0.8f, SpriteEffects.None, 0f);
+            spriteBatch.DrawString(ugao, String.Format("Ugao {0}", Player.Players[0].Ship.rotationAngle), new Vector2(300, 0), Color.Orange, 0f, new Vector2(0, 0), 0.8f, SpriteEffects.None, 0f);
             int x = 30;
             int y = 400;
             foreach (Node node in Enemy.Nodes)

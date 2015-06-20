@@ -70,5 +70,29 @@ namespace SpaceExplorer.Game
         {
             spriteBatch.Draw(this.Sprite.Texture, this.Position + this.Sprite.Origin, this.Sprite.FrameBounds, Color.White, this.rotationAngle, this.Sprite.Origin , 1f, SpriteEffects.None, 0f);
         }
+
+        // pomeranje svake sekunde za po (1,1)
+        Timer tajmer;
+        public void Makac()
+        {
+            tajmer = new Timer();
+            tajmer.Start(1);
+            tajmer.Fire += new NotifyHandler(tajmer_Fire);
+        }
+        void tajmer_Fire()
+        {
+            this.Direction = new Vector2(1, 1);
+            tajmer.Stop();
+        }
+
+        public void PomeriSe()
+        {
+            if (Config.currentSpeed > 200) { Config.currentSpeed = 200; }
+            if (Config.currentSpeed <= 0) { Config.currentSpeed = 0; }
+            // jer su u xna-u 0 rotacija sprajta je udesno
+            Vector2 pravac = new Vector2((float)Math.Sin(rotationAngle), - (float)Math.Cos(rotationAngle));
+            pravac.Normalize();
+            this.Move(pravac*Config.currentSpeed);
+        }
     }
 }

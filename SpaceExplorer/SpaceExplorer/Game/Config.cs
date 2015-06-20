@@ -11,6 +11,7 @@ namespace SpaceExplorer.Game
     {
         public static int Screen_Width = 800;
         public static int Screen_Height = 600;
+        public static float currentSpeed;
 
         public static int PlayerShipSpeed = 1;
         public static int PlayerShipHealth = 100;

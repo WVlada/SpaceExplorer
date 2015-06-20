@@ -75,8 +75,8 @@ namespace SpaceExplorer
             Timer.Update(gameTime);
             
             Node.UpdateNodes(gameTime);
-            Player.ProcessInput(); 
-            
+            Player.ProcessInput();
+
             // Provera sudara
             int g = 0;
             //for (int i = 0; i < PlayerShip.PlayerShips[0].CollisionList.Count; i++)
