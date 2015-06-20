@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna;
+using Microsoft.Xna.Framework.Graphics;
 using SpaceExplorer.Engine;
 
 namespace SpaceExplorer.Game
@@ -11,7 +13,7 @@ namespace SpaceExplorer.Game
 
         public ShipEngine shipEngine;
         public ShipHealthBar shipHealthBar;
-        
+
         public PlayerShip(SpriteSheet spriteSheet)
             : base(spriteSheet)
         {
@@ -21,6 +23,7 @@ namespace SpaceExplorer.Game
             this.Position = Config.PlayerShipSpawnPosition;
             this.CollisionList = new List<GameNode>();
 
+            this.rotationAngle = 0f;
             this.shipEngine = new ShipEngine(Config.PlayerShipEngine);
             this.shipHealthBar = new ShipHealthBar(Config.ShipHealthBar);
             this.ExplosionSpriteSheet = Config.PlayerShipExplosionSpriteSheet;
@@ -32,9 +35,12 @@ namespace SpaceExplorer.Game
             {
                 for (int i = CollisionList.Count - 1; i >= 0; i--)
                 {
-                    if (Node.CheckCollision(PlayerShip.PlayerShips[0], PlayerShip.PlayerShips[0].CollisionList[i]))
-                    { this.Collide(this.CollisionList[i]); }
-                    //this mi zamenjjuje -> PlayerShip.PlayerShips[0]
+                    if (this.CollisionList.Count != 0)
+                    {
+                        if (Node.CheckCollision(PlayerShip.PlayerShips[0], PlayerShip.PlayerShips[0].CollisionList[i]))
+                        { this.Collide(this.CollisionList[i]); }
+                        //this mi zamenjjuje -> PlayerShip.PlayerShips[0]
+                    }
                 }
             }
             base.Update(gameTime);
@@ -58,6 +64,11 @@ namespace SpaceExplorer.Game
             // moram sve poskidati, jer dobijam index out of range - svi ovi nodovi
             // zavise od polozaja playershipa za crtanje, a njega vise nema
             }
+        }
+        public float rotationAngle;
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(this.Sprite.Texture, this.Position + this.Sprite.Origin, this.Sprite.FrameBounds, Color.White, this.rotationAngle, this.Sprite.Origin , 1f, SpriteEffects.None, 0f);
         }
     }
 }

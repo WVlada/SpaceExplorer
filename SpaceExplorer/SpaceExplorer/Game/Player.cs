@@ -42,10 +42,8 @@ namespace SpaceExplorer.Game
                     
                     if (keystate.IsKeyDown(Keys.Up)) { Ship.Direction.Y -= 2; }
                     if (keystate.IsKeyDown(Keys.Down))  { Ship.Direction.Y += 2; }
-                    if (keystate.IsKeyDown(Keys.Left))  { Ship.Direction.X -= 2; }
-                    if (keystate.IsKeyDown(Keys.Right)) { Ship.Direction.X += 2; } //Ship.Health -= 0.3;
-                // ovde je promena
-                    
+                    if (keystate.IsKeyDown(Keys.Left))  { this.Ship.rotationAngle += 0.05f; }
+                    if (keystate.IsKeyDown(Keys.Right)) { this.Ship.rotationAngle -= 0.05f; }
                 }
             lastKeyboardState = keystate;
         }   
