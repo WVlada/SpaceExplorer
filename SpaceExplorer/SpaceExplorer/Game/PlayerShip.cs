@@ -7,12 +7,15 @@ using SpaceExplorer.Engine;
 
 namespace SpaceExplorer.Game
 {
+    delegate void RenderujSistem(object sender, EventArgs e);
+    
     class PlayerShip : Ship
     {
         public static List<GameNode> PlayerShips = new List<GameNode>();
 
         public ShipEngine shipEngine;
         public ShipHealthBar shipHealthBar;
+        public event RenderujSistem sudarSaSistemom;
 
         public PlayerShip(SpriteSheet spriteSheet)
             : base(spriteSheet)
@@ -45,9 +48,11 @@ namespace SpaceExplorer.Game
             }
             base.Update(gameTime);
         }
-
+        
         public void Collide(GameNode nodeSaKojimSamSeSudario)
         {
+            if (nodeSaKojimSamSeSudario is Sistem) { this.sudarSaSistemom(nodeSaKojimSamSeSudario, EventArgs.Empty); }
+            else
             this.TakeDamage(nodeSaKojimSamSeSudario.Health);
             nodeSaKojimSamSeSudario.TakeDamage(this.Health);
             //ovde mi je greska, jer u drugom updajtu, vrednost helta enemija je -80, pa to oduzimam od mog helta...

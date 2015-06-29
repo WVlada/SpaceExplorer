@@ -109,14 +109,20 @@
   <ItemGroup>
     <Compile Include="Engine\EffectNode.cs" />
     <Compile Include="Engine\Enemy.cs" />
+    <Compile Include="Engine\GalaxyMenuView.cs" />
+    <Compile Include="Engine\GalaxyView.cs" />
     <Compile Include="Engine\GameNode.cs" />
+    <Compile Include="Engine\GameView.cs" />
+    <Compile Include="Engine\MenuToolbarView.cs" />
     <Compile Include="Engine\Node.cs" />
     <Compile Include="Engine\Particle.cs" />
     <Compile Include="Engine\ParticleEngine.cs" />
+    <Compile Include="Engine\Sistem.cs" />
     <Compile Include="Engine\Sprite.cs" />
     <Compile Include="Engine\SpriteSheet.cs" />
     <Compile Include="Engine\Statistika.cs" />
     <Compile Include="Engine\Timer.cs" />
+    <Compile Include="Engine\View.cs" />
     <Compile Include="Game\Config.cs" />
     <Compile Include="Game\Level.cs" />
     <Compile Include="Game\Player.cs" />

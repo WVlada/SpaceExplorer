@@ -31,9 +31,9 @@ namespace SpaceExplorer.Engine
             }
         public static void NacrtajFontove(SpriteBatch spriteBatch, GameTime gametime)
         {
-            spriteBatch.DrawString(brojNeprijatelja, String.Format("Nodes:{0}, Enemies {1}", Node.Nodes.Count, Enemy.Nodes.Count), new Vector2(600f, 0), Color.Red, 0f, new Vector2(0, 0), 0.8f, SpriteEffects.None, 0f);
+            spriteBatch.DrawString(brojNeprijatelja, String.Format("Nodes:{0}, Enemies {1}", Node.Nodes.Count, Enemy.Nodes.Count), new Vector2(Config.Screen_Width - 200, 0), Color.Red, 0f, new Vector2(0, 0), 0.8f, SpriteEffects.None, 0f);
             spriteBatch.DrawString(protekloVreme, String.Format("Vreme {0}", gametime.TotalGameTime), new Vector2(0, 0), Color.Orange, 0f, new Vector2(0, 0), 0.8f, SpriteEffects.None, 0f);
-            spriteBatch.DrawString(ugao, String.Format("Ugao {0}", Player.Players[0].Ship.rotationAngle), new Vector2(300, 0), Color.Orange, 0f, new Vector2(0, 0), 0.8f, SpriteEffects.None, 0f);
+            spriteBatch.DrawString(ugao, String.Format("Radijani: {0}, Stepeni: {1}", Player.Players[0].Ship.rotationAngle.ToString("0.0#"), MathHelper.ToDegrees(Player.Players[0].Ship.rotationAngle).ToString("0.0#")), new Vector2((Config.Screen_Width - Config.VelicinaDesnogMenija) / 2, 0), Color.Red, 0f, new Vector2(0, 0), 0.8f, SpriteEffects.None, 0f);
             int x = 30;
             int y = 400;
             foreach (Node node in Enemy.Nodes)
@@ -48,7 +48,7 @@ namespace SpaceExplorer.Engine
                     spriteBatch.DrawString(koJeUListi, String.Format("Playerova Collision Lista: {0},{1},{2}", node.ToString(), node.Sprite.Origin.X + node.Position.X, node.Sprite.Origin.Y + node.Position.Y), new Vector2(0, y), Color.Orange, 0f, new Vector2(0, 0), 0.8f, SpriteEffects.None, 0f);
                     y += 20;
                 }
-                spriteBatch.DrawString(health, String.Format("Health:{0}", PlayerShip.PlayerShips[0].Health), new Vector2(600f, 20), Color.Red, 0f, new Vector2(0, 0), 0.8f, SpriteEffects.None, 0f);
+                spriteBatch.DrawString(health, String.Format("Health:{0}", PlayerShip.PlayerShips[0].Health), new Vector2((Config.Screen_Width - Config.VelicinaDesnogMenija) / 2 - 100, 0), Color.Red, 0f, new Vector2(0, 0), 0.8f, SpriteEffects.None, 0f);
             }
         }
     }

@@ -69,7 +69,7 @@ namespace SpaceExplorer.Engine
         public static bool CheckCollision(Node a, Node b)
         {
             // jednostavni sudari
-            if (Vector2.Distance(a.Position + a.Sprite.Origin, b.Position + b.Sprite.Origin) < 70f) { return true; }
+            if (Vector2.Distance(a.Position + a.Sprite.Origin, b.Position + b.Sprite.Origin) < Config.DaljinaZaKoliziju) { return true; }
             else
                 return false;
         }
