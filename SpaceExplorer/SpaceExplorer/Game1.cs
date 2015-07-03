@@ -43,10 +43,11 @@ namespace SpaceExplorer
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            Sistem.UcitajSadrzaj(this.Content);
             Statistika.UcitajFontove(this.Content);
             SpriteSheet.UcitajSadrzaj(this.Content, this.GraphicsDevice);
             Player.SpawnShip(PlayerIndex.One);
+            Sprite.UcitajFontove(this.Content);
 
             Level.UcitajPozadinu(this.Content);
             Level.UcitajNeprijatelje();
@@ -93,18 +94,18 @@ namespace SpaceExplorer
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Viewport = defaultViewport;
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
             particleEngine.Draw(spriteBatch);
             
             GraphicsDevice.Viewport = leftViewport;
                 
-                spriteBatch.Begin();
-                   foreach (Node node in Node.Nodes)
-                   {
-                       node.Draw(spriteBatch);
-                   }
-                   Level.NacrtajPozadinu(spriteBatch);
-                spriteBatch.End();
+             //   spriteBatch.Begin();
+             //      foreach (Node node in Node.Nodes)
+              //     {
+              //         node.Draw(spriteBatch);
+               //    }
+                //   Level.NacrtajPozadinu(spriteBatch);
+                //spriteBatch.End();
             
                 foreach (View vju in Config.TrenutniPogledi)
                 {
@@ -120,6 +121,10 @@ namespace SpaceExplorer
                         GraphicsDevice.Viewport = leftViewport;
                         spriteBatch.Begin();
                         vju.Draw(spriteBatch);
+                        foreach (Node node in Node.Nodes)
+                                {
+                                    node.Draw(spriteBatch);
+                                }
                         spriteBatch.End();
                     } 
                 }

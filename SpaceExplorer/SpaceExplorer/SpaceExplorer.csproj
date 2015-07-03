@@ -109,20 +109,23 @@
   <ItemGroup>
     <Compile Include="Engine\EffectNode.cs" />
     <Compile Include="Engine\Enemy.cs" />
-    <Compile Include="Engine\GalaxyMenuView.cs" />
-    <Compile Include="Engine\GalaxyView.cs" />
+    <Compile Include="Engine\Planet.cs" />
+    <Compile Include="Engine\Sun.cs" />
+    <Compile Include="Engine\Views\GalaxyMenuView.cs" />
+    <Compile Include="Engine\Views\GalaxyView.cs" />
     <Compile Include="Engine\GameNode.cs" />
-    <Compile Include="Engine\GameView.cs" />
-    <Compile Include="Engine\MenuToolbarView.cs" />
+    <Compile Include="Engine\Views\GameView.cs" />
+    <Compile Include="Engine\Views\MenuToolbarView.cs" />
     <Compile Include="Engine\Node.cs" />
     <Compile Include="Engine\Particle.cs" />
     <Compile Include="Engine\ParticleEngine.cs" />
     <Compile Include="Engine\Sistem.cs" />
+    <Compile Include="Engine\Views\SistemView.cs" />
     <Compile Include="Engine\Sprite.cs" />
     <Compile Include="Engine\SpriteSheet.cs" />
     <Compile Include="Engine\Statistika.cs" />
     <Compile Include="Engine\Timer.cs" />
-    <Compile Include="Engine\View.cs" />
+    <Compile Include="Engine\Views\View.cs" />
     <Compile Include="Game\Config.cs" />
     <Compile Include="Game\Level.cs" />
     <Compile Include="Game\Player.cs" />
@@ -170,6 +173,9 @@
       <ProductName>Microsoft XNA Framework Redistributable 4.0</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

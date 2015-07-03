@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 
 namespace SpaceExplorer.Engine
 {
@@ -11,7 +12,8 @@ namespace SpaceExplorer.Engine
         double frameTimeRemaining;
         uint textureIndex;
         public event NotifyHandler KrajLoopa;
-
+        public static SpriteFont pozicijaSprajta;
+                
         public Vector2 Origin;
         public int Width { get { return this.sheet.TileWidth; } }
         public int Height { get { return this.sheet.TileHeight; } }
@@ -50,7 +52,13 @@ namespace SpaceExplorer.Engine
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
             {
             spriteBatch.Draw(this.Texture, position, this.FrameBounds, Color.White);
+            spriteBatch.DrawString(pozicijaSprajta, position.ToString(), position, Color.Wheat,0f,new Vector2(0,0),0.5f,SpriteEffects.None,0f);
             }
+        public static void UcitajFontove(ContentManager con)
+        {
+            
+            pozicijaSprajta = con.Load<SpriteFont>("Tahoma");
+        }
         
     }
 }

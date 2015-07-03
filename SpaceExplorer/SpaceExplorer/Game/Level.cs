@@ -27,10 +27,21 @@ namespace SpaceExplorer.Game
             three.Position = new Vector2(600, 400);
             three.Health = 20;
             three.ExplosionSpriteSheet = Config.AsteroidExplosionSpriteSheet;
-            Enemy four = new Enemy(Config.PlanetSpriteSheet);
+            Enemy four = new Enemy(Config.PlanetSpriteSheet2);
             four.Position = new Vector2(500, 450);
             four.Health = 20;
             four.ExplosionSpriteSheet = Config.AsteroidExplosionSpriteSheet;
+            Enemy five = new Enemy(Config.GasGiantSpriteSheet);
+            five.Position = new Vector2(200, 200);
+            five.Health = 20;
+            five.ExplosionSpriteSheet = Config.AsteroidExplosionSpriteSheet;
+            Enemy six = new Enemy(Config.GasGiantSpriteSheet2);
+            six.Position = new Vector2(300, 300);
+            six.Health = 20;
+            six.ExplosionSpriteSheet = Config.AsteroidExplosionSpriteSheet;
+
+            Sistem Sol = new Sistem(Config.NekiSistem, "Sol", new Vector2(400, 400), new Sun(Config.SunSpriteSheet), 0, null);
+            Sistem AlphaCentauri = new Sistem(Config.NekiSistem2, "Alpha Centauri", new Vector2(450, 430),new Sun(Config.SunSpriteSheet), 0, null);
         }
 
         public static void UcitajPozadinu(ContentManager content)

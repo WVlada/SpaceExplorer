@@ -22,7 +22,7 @@ namespace SpaceExplorer.Engine
         
         public override void Draw(SpriteBatch spritebatch)
         {
-            for (int i = 0; i < Sistemi.Count - 1; i++)
+            for (int i = 0; i <= Sistemi.Count - 1; i++)
             {
                 Sistemi[i].Draw(spritebatch); 
             }    

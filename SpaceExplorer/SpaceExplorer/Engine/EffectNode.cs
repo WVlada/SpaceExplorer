@@ -10,7 +10,7 @@ namespace SpaceExplorer.Engine
         public EffectNode(SpriteSheet spriteSheet, Vector2 position, Node nod)
             : base(spriteSheet) 
         {
-            this.Position = CentrirajEksploziju(position,nod);
+            this.Position = CentrirajEksploziju(position,this, nod);
             this.Sprite.KrajLoopa += new NotifyHandler(Sprite_KrajLoopa);
         }
 
@@ -20,17 +20,17 @@ namespace SpaceExplorer.Engine
         }
         float x;
         float y;
-        Vector2 CentrirajEksploziju(Vector2 polozajNoda, Node nod)
+        Vector2 CentrirajEksploziju(Vector2 polozajNodaKojiTrebaDaEksplodira, EffectNode nodeEfekat, Node nod)
         {
-            if (nod.Sprite.Origin.X < this.Sprite.Origin.X)
-            { x = polozajNoda.X - (this.Sprite.Origin.X - nod.Sprite.Origin.X); }
-            else
-            { x = polozajNoda.X + (this.Sprite.Origin.X - nod.Sprite.Origin.X); }
+            if (nodeEfekat.Sprite.Origin.X < nod.Sprite.Origin.X)//ako je eksplozija manja
+            { x = polozajNodaKojiTrebaDaEksplodira.X + nod.Sprite.Origin.X - nodeEfekat.Sprite.Origin.X; }
+            else // ako je eksplozija veca
+            { x = polozajNodaKojiTrebaDaEksplodira.X + nod.Sprite.Origin.X - nodeEfekat.Sprite.Origin.X; }
 
-            if (nod.Sprite.Origin.Y < this.Sprite.Origin.Y)
-            { y = polozajNoda.Y - (this.Sprite.Origin.Y - nod.Sprite.Origin.Y); }
+            if (nodeEfekat.Sprite.Origin.Y < this.Sprite.Origin.Y)
+            { y = polozajNodaKojiTrebaDaEksplodira.Y + nod.Sprite.Origin.Y - nodeEfekat.Sprite.Origin.Y; }
             else
-            { y = polozajNoda.Y + (this.Sprite.Origin.Y - nod.Sprite.Origin.Y); }
+            { y = polozajNodaKojiTrebaDaEksplodira.Y + nod.Sprite.Origin.Y - nodeEfekat.Sprite.Origin.Y; }
 
             return new Vector2(x, y);
         }

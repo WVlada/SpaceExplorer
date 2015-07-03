@@ -51,7 +51,7 @@ namespace SpaceExplorer.Game
         
         public void Collide(GameNode nodeSaKojimSamSeSudario)
         {
-            if (nodeSaKojimSamSeSudario is Sistem) { this.sudarSaSistemom(nodeSaKojimSamSeSudario, EventArgs.Empty); }
+            if (nodeSaKojimSamSeSudario is Sistem) { Config.TrenutniPogledi[0] = new SistemView(nodeSaKojimSamSeSudario); }
             else
             this.TakeDamage(nodeSaKojimSamSeSudario.Health);
             nodeSaKojimSamSeSudario.TakeDamage(this.Health);
