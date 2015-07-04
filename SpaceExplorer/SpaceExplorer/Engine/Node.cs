@@ -38,11 +38,20 @@ namespace SpaceExplorer.Engine
         public Sprite Sprite;
         private bool dead;
         public bool Dead { get { return this.dead; } }
+        public string ImeSistemaKomePripada;
         
         public Node(SpriteSheet spriteSheet)
         {
             Nodes.Add(this);
             this.Sprite = new Sprite(spriteSheet);
+            
+        }
+        public Node(SpriteSheet spriteSheet, string imeSistema)
+        {
+            Nodes.Add(this);
+            this.Sprite = new Sprite(spriteSheet);
+            this.ImeSistemaKomePripada = imeSistema;
+
         }
         public void SetParent(Node parent)
         {

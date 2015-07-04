@@ -13,9 +13,13 @@ namespace SpaceExplorer.Engine
     class SistemView : GameView
     {
         public static Sistem TrenutniSistem;
-        public SistemView(GameNode nodesakojimsamsesudario)
+        public string name;
+        public SistemView(GameNode nodesakojimsamsesudario, PlayerShip playerShip)
         {
             TrenutniSistem = (Sistem)nodesakojimsamsesudario;
+            this.name = nodesakojimsamsesudario.ImeSistemaKomePripada;
+            playerShip.Position = new Vector2(this.horizontalSize/2, this.verticalSize - playerShip.Sprite.Height - 40);
+            Config.currentSpeed = 0;
         }
 
         public override void Draw(SpriteBatch spriteBatch)

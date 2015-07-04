@@ -23,6 +23,13 @@ namespace SpaceExplorer.Engine
             hitTimer = new Timer();
             hitTimer.Fire += new NotifyHandler(hitTimer_Fire);
         }
+        public GameNode(SpriteSheet spriteSheet, string imeSistema)
+            : base(spriteSheet)
+        {
+            hitTimer = new Timer();
+            hitTimer.Fire += new NotifyHandler(hitTimer_Fire);
+            this.ImeSistemaKomePripada = imeSistema;
+        }
 
         void hitTimer_Fire()
         {

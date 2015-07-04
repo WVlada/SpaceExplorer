@@ -40,9 +40,13 @@ namespace SpaceExplorer.Game
                 {
                     if (this.CollisionList.Count != 0)
                     {
-                        if (Node.CheckCollision(PlayerShip.PlayerShips[0], PlayerShip.PlayerShips[0].CollisionList[i]))
-                        { this.Collide(this.CollisionList[i]); }
-                        //this mi zamenjjuje -> PlayerShip.PlayerShips[0]
+                        if (PlayerShip.PlayerShips[0].CollisionList[i] is Sistem)
+                        {
+
+                            if (Node.CheckCollision(PlayerShip.PlayerShips[0], PlayerShip.PlayerShips[0].CollisionList[i]))
+                            { this.Collide(this.CollisionList[i]); }
+                            //this mi zamenjjuje -> PlayerShip.PlayerShips[0]
+                        }
                     }
                 }
             }
@@ -51,10 +55,13 @@ namespace SpaceExplorer.Game
         
         public void Collide(GameNode nodeSaKojimSamSeSudario)
         {
-            if (nodeSaKojimSamSeSudario is Sistem) { Config.TrenutniPogledi[0] = new SistemView(nodeSaKojimSamSeSudario); }
-            else
-            this.TakeDamage(nodeSaKojimSamSeSudario.Health);
-            nodeSaKojimSamSeSudario.TakeDamage(this.Health);
+            if (nodeSaKojimSamSeSudario is Sistem && Config.TrenutniPogledi[0] is GalaxyView) { Config.TrenutniPogledi[0] = new SistemView(nodeSaKojimSamSeSudario,this); }
+
+            if (nodeSaKojimSamSeSudario is Enemy && Config.TrenutniPogledi[0] is SistemView)
+            {
+                this.TakeDamage(nodeSaKojimSamSeSudario.Health);
+                nodeSaKojimSamSeSudario.TakeDamage(this.Health);
+            }
             //ovde mi je greska, jer u drugom updajtu, vrednost helta enemija je -80, pa to oduzimam od mog helta...
             // znaci moram da implamentiram Remove()
         }
@@ -73,7 +80,7 @@ namespace SpaceExplorer.Game
         public float rotationAngle;
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.Sprite.Texture, this.Position + this.Sprite.Origin, this.Sprite.FrameBounds, Color.White, this.rotationAngle, this.Sprite.Origin , 1f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(this.Sprite.Texture, this.Position + this.Sprite.Origin, this.Sprite.FrameBounds, Color.White, this.rotationAngle, this.Sprite.Origin, 1f, SpriteEffects.None, 0f);
         }
 
         // pomeranje svake sekunde za po (1,1)

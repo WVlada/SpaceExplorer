@@ -43,16 +43,19 @@ namespace SpaceExplorer
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            GalaxyView.UcitajSadrzaj(this.Content);
+            GalaxyMenuView.UcitajPozadinu(this.Content);
             Sistem.UcitajSadrzaj(this.Content);
-            Statistika.UcitajFontove(this.Content);
+            //Statistika.UcitajFontove(this.Content);
+            //Sprite.UcitajFontove(this.Content);
+
+            //Level.UcitajPozadinu(this.Content);
+            
+            
             SpriteSheet.UcitajSadrzaj(this.Content, this.GraphicsDevice);
             Player.SpawnShip(PlayerIndex.One);
-            Sprite.UcitajFontove(this.Content);
-
-            Level.UcitajPozadinu(this.Content);
-            Level.UcitajNeprijatelje();
-            
             GalaxyMenuView.UcitajPozadinu(this.Content);
+            Level.UcitajNeprijatelje();
 
             // particle engine
             List<Texture2D> textures = new List<Texture2D>();
@@ -82,10 +85,17 @@ namespace SpaceExplorer
                 this.Exit();
             //pozivam metod koji onda prolazi kroz static listu - nije kao sa nodovima
             Timer.Update(gameTime);
-            
-            Node.UpdateNodes(gameTime);
+
+            PlayerShip.PlayerShips[0].Update(gameTime);
+            //Node.UpdateNodes(gameTime);
             Player.ProcessInput();
 
+            // drzanje player u granicama - treba da implementirar izlazak iz sistema - mozda sa eventom?
+            if (PlayerShip.PlayerShips[0].Position.X < 0) { PlayerShip.PlayerShips[0].Position = new Vector2(0, PlayerShip.PlayerShips[0].Position.Y); if (Config.TrenutniPogledi[0] is SistemView) Config.TrenutniPogledi[0] = new GalaxyView(PlayerShip.PlayerShips[0]); }
+            if (PlayerShip.PlayerShips[0].Position.Y < 0) { PlayerShip.PlayerShips[0].Position = new Vector2(PlayerShip.PlayerShips[0].Position.X, 0); if (Config.TrenutniPogledi[0] is SistemView) Config.TrenutniPogledi[0] = new GalaxyView(PlayerShip.PlayerShips[0]); }
+            if (PlayerShip.PlayerShips[0].Position.X > Config.TrenutniPogledi[0].horizontalSize - PlayerShip.PlayerShips[0].Sprite.Width) { PlayerShip.PlayerShips[0].Position = new Vector2(Config.TrenutniPogledi[0].horizontalSize - PlayerShip.PlayerShips[0].Sprite.Width, PlayerShip.PlayerShips[0].Position.Y); if (Config.TrenutniPogledi[0] is SistemView) Config.TrenutniPogledi[0] = new GalaxyView(PlayerShip.PlayerShips[0]); }
+            if (PlayerShip.PlayerShips[0].Position.Y > Config.TrenutniPogledi[0].verticalSize - PlayerShip.PlayerShips[0].Sprite.Height) { PlayerShip.PlayerShips[0].Position = new Vector2(PlayerShip.PlayerShips[0].Position.X, Config.TrenutniPogledi[0].verticalSize - PlayerShip.PlayerShips[0].Sprite.Height); if (Config.TrenutniPogledi[0] is SistemView) Config.TrenutniPogledi[0] = new GalaxyView(PlayerShip.PlayerShips[0]); }
+            
             particleEngine.EmitterLocation = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
             particleEngine.Update();
                         
@@ -99,13 +109,6 @@ namespace SpaceExplorer
             
             GraphicsDevice.Viewport = leftViewport;
                 
-             //   spriteBatch.Begin();
-             //      foreach (Node node in Node.Nodes)
-              //     {
-              //         node.Draw(spriteBatch);
-               //    }
-                //   Level.NacrtajPozadinu(spriteBatch);
-                //spriteBatch.End();
             
                 foreach (View vju in Config.TrenutniPogledi)
                 {
@@ -113,31 +116,23 @@ namespace SpaceExplorer
                     {
                         GraphicsDevice.Viewport = rightViewport;
                         spriteBatch.Begin();
-                        vju.Draw(spriteBatch);
+                            
+                            vju.Draw(spriteBatch);
+                        
                         spriteBatch.End();
                     }
                     if (vju is GameView)
                     {
                         GraphicsDevice.Viewport = leftViewport;
                         spriteBatch.Begin();
-                        vju.Draw(spriteBatch);
-                        foreach (Node node in Node.Nodes)
-                                {
-                                    node.Draw(spriteBatch);
-                                }
+                        
+                            vju.Draw(spriteBatch);
+                               
+                        Player.Players[0].Ship.Draw(spriteBatch);
                         spriteBatch.End();
                     } 
                 }
-            // Statistika.NacrtajFontove(spriteBatch, gameTime); 
-            // spriteBatch.End();
-
-            // GraphicsDevice.Viewport = rightViewport ;
-            // spriteBatch.Begin();
-            
-            // Level.NacrtajPozadinu(spriteBatch);
-    
-            // spriteBatch.End();
-            
+                        
             base.Draw(gameTime);
         }
     }

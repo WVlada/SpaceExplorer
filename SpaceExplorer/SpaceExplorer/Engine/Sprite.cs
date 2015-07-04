@@ -52,7 +52,7 @@ namespace SpaceExplorer.Engine
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
             {
             spriteBatch.Draw(this.Texture, position, this.FrameBounds, Color.White);
-            spriteBatch.DrawString(pozicijaSprajta, position.ToString(), position, Color.Wheat,0f,new Vector2(0,0),0.5f,SpriteEffects.None,0f);
+            //spriteBatch.DrawString(pozicijaSprajta, position.ToString(), position, Color.Wheat,0f,new Vector2(0,0),0.5f,SpriteEffects.None,0f);
             }
         public static void UcitajFontove(ContentManager con)
         {

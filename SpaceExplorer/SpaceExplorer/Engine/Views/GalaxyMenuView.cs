@@ -18,13 +18,13 @@ namespace SpaceExplorer.Engine
         }
         public static void UcitajPozadinu(ContentManager content)
         {
-            teksturaMenija = content.Load<Texture2D>("circle");
+            teksturaMenija = content.Load<Texture2D>("menu");
 
         }
         public override void Draw(SpriteBatch spritebatch)
         {
             // za ovaj VIEW levi-gore ugao je 0,0 
-            spritebatch.Draw(teksturaMenija, new Rectangle(0, 0, base.horizontalSize, base.verticalSize), Color.Black);
+            spritebatch.Draw(teksturaMenija, new Rectangle(0, 0, base.horizontalSize, base.verticalSize), Color.White);
         }
 
         public override void Update(GameTime gameTime)

@@ -15,6 +15,11 @@ namespace SpaceExplorer.Engine
         {
             PlayerShip.PlayerShips[0].CollisionList.Add(this);
         }
+        public Enemy(SpriteSheet spriteSheet, string imeSistema)
+            : base(spriteSheet)
+        {
+            PlayerShip.PlayerShips[0].CollisionList.Add(this);
+        }
 
         
         

@@ -15,7 +15,7 @@ namespace SpaceExplorer.Game
         
         public static void UcitajNeprijatelje()
         {
-            Enemy one = new Enemy(Config.AsteroidSpriteSheet);
+            Enemy one = new Enemy(Config.AsteroidSpriteSheet, "Sol");
             one.Position = new Vector2(650, 150);
             one.Health = 20;
             one.ExplosionSpriteSheet = Config.AsteroidExplosionSpriteSheet;
@@ -40,8 +40,8 @@ namespace SpaceExplorer.Game
             six.Health = 20;
             six.ExplosionSpriteSheet = Config.AsteroidExplosionSpriteSheet;
 
-            Sistem Sol = new Sistem(Config.NekiSistem, "Sol", new Vector2(400, 400), new Sun(Config.SunSpriteSheet), 0, null);
-            Sistem AlphaCentauri = new Sistem(Config.NekiSistem2, "Alpha Centauri", new Vector2(450, 430),new Sun(Config.SunSpriteSheet), 0, null);
+            Sistem Sol = new Sistem(Config.NekiSistem, "Sol", new Vector2(300, 300), new Sun(Config.SunSpriteSheet), 0, null, new Vector2(300,300), new Sprite(Config.NekiSistem), new Vector2(Config.velicinaGameplayprozoraHorizontala/2, Config.velicinaGameplayprozoraVertikala/2));
+            Sistem AlphaCentauri = new Sistem(Config.NekiSistem2, "Alpha Centauri", new Vector2(550, 430), new Sun(Config.SunSpriteSheet), 0, null, new Vector2(350, 350), new Sprite(Config.NekiSistem2), new Vector2(Config.velicinaGameplayprozoraHorizontala / 2, Config.velicinaGameplayprozoraVertikala / 2));
         }
 
         public static void UcitajPozadinu(ContentManager content)

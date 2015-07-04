@@ -14,32 +14,40 @@ namespace SpaceExplorer.Engine
     class Sistem : GameNode
     {
         public string Ime;
-        public Vector2 Pozicija;
         public int velicinaSistema;
         Random rnd = new Random();
         public Sun Sunce;
         public List<Planet> Planete = new List<Planet>();
         static SpriteFont imenaSistema;
+        public Sprite spoljnatekstura;
+        public Vector2 spoljnapozicija;
         
         public int brojPlaneta;
         public Vector2[] lokacijaIBrojMeseca;
         
         //vec ima sprite
-        public Sistem(SpriteSheet spriteSheet, string name, Vector2 position, Sun sunce, int brojPlaneta, Vector2[] lokacijaIBrojMeseca) : base(spriteSheet)
+        public Sistem(SpriteSheet spriteSheet, string name, Vector2 position, Sun sunce, int brojPlaneta, Vector2[] lokacijaIBrojMeseca, Vector2 spoljna,Sprite spoljnaTekstura, Vector2 velicinaSistema) : base(spriteSheet)
         {
             // konstruktor sistema za GalaxyView
             this.Ime = name;
             this.Position = position;
             this.Sunce = sunce;
+            this.spoljnapozicija = spoljna;
+            this.spoljnatekstura = spoljnaTekstura;
+            GalaxyView.Sistemi.Add(this);
             
             PlayerShip.PlayerShips[0].CollisionList.Add(this);
-
+            for (int i = 0; i < brojPlaneta; i++)
+            {
+                Planet planet = new Planet(Config.PlanetSpriteSheet);
+                planet.Position = new Vector2(100 * i, 100 * i);
+                Planete.Add(planet);
+            }
             // konstruktor sistema za SistemView
             if (brojPlaneta != null) {this.brojPlaneta = brojPlaneta;}
             //this.KonstruisiPlanete(brojPlaneta);
             if (lokacijaIBrojMeseca != null) {this.lokacijaIBrojMeseca = lokacijaIBrojMeseca;}
 
-            GalaxyView.Sistemi.Add(this);
         }
         
         private void KonstruisiSistem(int brojplaneta)
@@ -53,8 +61,9 @@ namespace SpaceExplorer.Engine
         public override void Draw(SpriteBatch spriteBatch)
         {
             // ovo treba biti sunce
-            spriteBatch.Draw(this.Sunce.Sprite.Texture, new Rectangle(0, 0, this.Sunce.Sprite.Texture.Width, this.Sunce.Sprite.Texture.Height), Color.White);
+            spriteBatch.Draw(this.Sunce.Sprite.Texture, this.Sunce.Position, Color.Wheat);
             spriteBatch.DrawString(imenaSistema,this.Ime, new Vector2(300,0), Color.White);
+            spriteBatch.DrawString(imenaSistema, this.Sunce.Position.ToString(), this.Sunce.Position, Color.Wheat);
 
         }
 

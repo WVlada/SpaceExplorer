@@ -13,6 +13,13 @@ namespace SpaceExplorer.Engine
         {
             this.horizontalSize = base.horizontalSize - Config.VelicinaDesnogMenija;
             this.verticalSize = base.verticalSize;
+            Config.velicinaGameplayprozoraHorizontala = this.horizontalSize;
+            Config.velicinaGameplayprozoraVertikala = this.verticalSize;
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+
         }
                 
     }

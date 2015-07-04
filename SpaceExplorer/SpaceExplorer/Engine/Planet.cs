@@ -15,13 +15,14 @@ namespace SpaceExplorer.Engine
         public static List<Planet> SvePlanete = new List<Planet>();
         
         Sistem sistem;
-
-        Planet(SpriteSheet spriteSheet, Sistem sistem) : base(spriteSheet) 
+        public SpriteSheet spoljnaTeksuta;
+        
+        public Planet(SpriteSheet spriteSheet) : base(spriteSheet) 
         {
             this.sistem = sistem;
             sistem.Planete.Add(this);
             SvePlanete.Add(this);
-
+            
             PlayerShip.PlayerShips[0].CollisionList.Add(this);
         }
 

@@ -15,8 +15,9 @@ namespace SpaceExplorer.Engine
             this.horizontalSize = Config.VelicinaDesnogMenija;
             this.verticalSize = base.verticalSize;
         }
-        public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
+        public override void Draw(SpriteBatch spriteBatch)
         {
+
         }
         public override void Update(GameTime gameTime)
         {
