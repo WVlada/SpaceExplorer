@@ -40,8 +40,8 @@ namespace SpaceExplorer.Game
             six.Health = 20;
             six.ExplosionSpriteSheet = Config.AsteroidExplosionSpriteSheet;
 
-            Sistem Sol = new Sistem(Config.NekiSistem, "Sol", new Vector2(300, 300), new Sun(Config.SunSpriteSheet), 0, null, new Vector2(300,300), new Sprite(Config.NekiSistem), new Vector2(Config.velicinaGameplayprozoraHorizontala/2, Config.velicinaGameplayprozoraVertikala/2));
-            Sistem AlphaCentauri = new Sistem(Config.NekiSistem2, "Alpha Centauri", new Vector2(550, 430), new Sun(Config.SunSpriteSheet), 0, null, new Vector2(350, 350), new Sprite(Config.NekiSistem2), new Vector2(Config.velicinaGameplayprozoraHorizontala / 2, Config.velicinaGameplayprozoraVertikala / 2));
+            Sistem Sol = new Sistem(Config.PickASpoljniSPriteSheet("star"), "Sol", new Vector2(300, 300), new Sun(Config.PickASunSPriteSheet()), 9, null, new Vector2(300, 300), new Sprite(Config.PickASpoljniSPriteSheet()), new Vector2(Config.velicinaGameplayprozoraHorizontala / 2, Config.velicinaGameplayprozoraVertikala / 2));
+            Sistem AlphaCentauri = new Sistem(Config.PickASpoljniSPriteSheet(), "Alpha Centauri", new Vector2(550, 430), new Sun(Config.PickASunSPriteSheet()), 6, null, new Vector2(350, 350), new Sprite(Config.PickASpoljniSPriteSheet()), new Vector2(Config.velicinaGameplayprozoraHorizontala / 2, Config.velicinaGameplayprozoraVertikala / 2));
         }
 
         public static void UcitajPozadinu(ContentManager content)

@@ -109,6 +109,7 @@
   <ItemGroup>
     <Compile Include="Engine\EffectNode.cs" />
     <Compile Include="Engine\Enemy.cs" />
+    <Compile Include="Engine\NapraviPrimitive.cs" />
     <Compile Include="Engine\Planet.cs" />
     <Compile Include="Engine\Sun.cs" />
     <Compile Include="Engine\Views\GalaxyMenuView.cs" />

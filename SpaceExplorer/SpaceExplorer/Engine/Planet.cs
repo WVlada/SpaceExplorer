@@ -17,10 +17,10 @@ namespace SpaceExplorer.Engine
         Sistem sistem;
         public SpriteSheet spoljnaTeksuta;
         
-        public Planet(SpriteSheet spriteSheet) : base(spriteSheet) 
+        public Planet(SpriteSheet spriteSheet, int brojPlaneta, int brojOvePlanete) : base(spriteSheet) 
         {
             this.sistem = sistem;
-            sistem.Planete.Add(this);
+            this.Position = NapraviPrimitive.randomMEstoZaPlanetu(Config.TrenutniPogledi[0], brojPlaneta, brojOvePlanete, this.Sprite.sheet);
             SvePlanete.Add(this);
             
             PlayerShip.PlayerShips[0].CollisionList.Add(this);
