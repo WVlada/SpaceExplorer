@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna;
 using Microsoft.Xna.Framework.Graphics;
 using SpaceExplorer.Engine;
+using Microsoft.Xna.Framework.Content;
 
 namespace SpaceExplorer.Game
 {
@@ -16,6 +17,7 @@ namespace SpaceExplorer.Game
         public ShipEngine shipEngine;
         public ShipHealthBar shipHealthBar;
         public event RenderujSistem sudarSaSistemom;
+        public static SpriteFont polozajUGalaksiji;
 
         public PlayerShip(SpriteSheet spriteSheet)
             : base(spriteSheet)
@@ -55,7 +57,8 @@ namespace SpaceExplorer.Game
         
         public void Collide(GameNode nodeSaKojimSamSeSudario)
         {
-            if (nodeSaKojimSamSeSudario is Sistem && Config.TrenutniPogledi[0] is GalaxyView) { Config.TrenutniPogledi[0] = new SistemView(nodeSaKojimSamSeSudario,this); }
+            // nije sjajno resenje jer ne mogu da se vratim u sistem iz kog sam izasao, mozda kad istrosim koju litru goriva da resetujem trenutni sistem?
+            if (nodeSaKojimSamSeSudario is Sistem && Config.TrenutniPogledi[0] is GalaxyView && nodeSaKojimSamSeSudario != SistemView.TrenutniSistem)  { Config.TrenutniPogledi[0] = new SistemView(nodeSaKojimSamSeSudario,this); }
 
             if (nodeSaKojimSamSeSudario is Enemy && Config.TrenutniPogledi[0] is SistemView)
             {
@@ -81,7 +84,9 @@ namespace SpaceExplorer.Game
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(this.Sprite.Texture, this.Position + this.Sprite.Origin, this.Sprite.FrameBounds, Color.White, this.rotationAngle, this.Sprite.Origin, 1f, SpriteEffects.None, 0f);
-        }
+            if (Config.TrenutniPogledi[0] is GalaxyView)
+            { spriteBatch.DrawString(polozajUGalaksiji, this.Position.ToString().TrimStart(char.Parse("{")).TrimEnd(char.Parse("}")), new Vector2(Config.TrenutniPogledi[0].horizontalSize/2,0), Color.Wheat); }
+            }
 
         // pomeranje svake sekunde za po (1,1)
         Timer tajmer;
@@ -106,5 +111,18 @@ namespace SpaceExplorer.Game
             pravac.Normalize();
             this.Move(pravac*Config.currentSpeed);
         }
+        
+        public static void ucitajPodatke(ContentManager cont)
+        {
+            polozajUGalaksiji = cont.Load<SpriteFont>("Tahoma");
+        }
+
+
+
+        // parametri broda
+
+        public int Gorivo;
+
+
     }
 }

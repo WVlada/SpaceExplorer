@@ -48,6 +48,7 @@ namespace SpaceExplorer
             Sistem.UcitajSadrzaj(this.Content);
             //Statistika.UcitajFontove(this.Content);
             //Sprite.UcitajFontove(this.Content);
+            PlayerShip.ucitajPodatke(this.Content);
 
             //Level.UcitajPozadinu(this.Content);
             
@@ -90,11 +91,13 @@ namespace SpaceExplorer
             //Node.UpdateNodes(gameTime);
             Player.ProcessInput();
 
+            Sistem.UpdateNodes(gameTime);
+
             // drzanje player u granicama - treba da implementirar izlazak iz sistema - mozda sa eventom?
-            if (PlayerShip.PlayerShips[0].Position.X < 0) { PlayerShip.PlayerShips[0].Position = new Vector2(0, PlayerShip.PlayerShips[0].Position.Y); if (Config.TrenutniPogledi[0] is SistemView) Config.TrenutniPogledi[0] = new GalaxyView(PlayerShip.PlayerShips[0]); }
-            if (PlayerShip.PlayerShips[0].Position.Y < 0) { PlayerShip.PlayerShips[0].Position = new Vector2(PlayerShip.PlayerShips[0].Position.X, 0); if (Config.TrenutniPogledi[0] is SistemView) Config.TrenutniPogledi[0] = new GalaxyView(PlayerShip.PlayerShips[0]); }
-            if (PlayerShip.PlayerShips[0].Position.X > Config.TrenutniPogledi[0].horizontalSize - PlayerShip.PlayerShips[0].Sprite.Width) { PlayerShip.PlayerShips[0].Position = new Vector2(Config.TrenutniPogledi[0].horizontalSize - PlayerShip.PlayerShips[0].Sprite.Width, PlayerShip.PlayerShips[0].Position.Y); if (Config.TrenutniPogledi[0] is SistemView) Config.TrenutniPogledi[0] = new GalaxyView(PlayerShip.PlayerShips[0]); }
-            if (PlayerShip.PlayerShips[0].Position.Y > Config.TrenutniPogledi[0].verticalSize - PlayerShip.PlayerShips[0].Sprite.Height) { PlayerShip.PlayerShips[0].Position = new Vector2(PlayerShip.PlayerShips[0].Position.X, Config.TrenutniPogledi[0].verticalSize - PlayerShip.PlayerShips[0].Sprite.Height); if (Config.TrenutniPogledi[0] is SistemView) Config.TrenutniPogledi[0] = new GalaxyView(PlayerShip.PlayerShips[0]); }
+            if (PlayerShip.PlayerShips[0].Position.X < 0) { PlayerShip.PlayerShips[0].Position = new Vector2(0, PlayerShip.PlayerShips[0].Position.Y); if (Config.TrenutniPogledi[0] is SistemView) Config.TrenutniPogledi[0] = new GalaxyView(PlayerShip.PlayerShips[0], SistemView.TrenutniSistem); }
+            if (PlayerShip.PlayerShips[0].Position.Y < 0) { PlayerShip.PlayerShips[0].Position = new Vector2(PlayerShip.PlayerShips[0].Position.X, 0); if (Config.TrenutniPogledi[0] is SistemView) Config.TrenutniPogledi[0] = new GalaxyView(PlayerShip.PlayerShips[0], SistemView.TrenutniSistem); }
+            if (PlayerShip.PlayerShips[0].Position.X > Config.TrenutniPogledi[0].horizontalSize - PlayerShip.PlayerShips[0].Sprite.Width) { PlayerShip.PlayerShips[0].Position = new Vector2(Config.TrenutniPogledi[0].horizontalSize - PlayerShip.PlayerShips[0].Sprite.Width, PlayerShip.PlayerShips[0].Position.Y); if (Config.TrenutniPogledi[0] is SistemView) Config.TrenutniPogledi[0] = new GalaxyView(PlayerShip.PlayerShips[0], SistemView.TrenutniSistem); }
+            if (PlayerShip.PlayerShips[0].Position.Y > Config.TrenutniPogledi[0].verticalSize - PlayerShip.PlayerShips[0].Sprite.Height) { PlayerShip.PlayerShips[0].Position = new Vector2(PlayerShip.PlayerShips[0].Position.X, Config.TrenutniPogledi[0].verticalSize - PlayerShip.PlayerShips[0].Sprite.Height); if (Config.TrenutniPogledi[0] is SistemView) Config.TrenutniPogledi[0] = new GalaxyView(PlayerShip.PlayerShips[0], SistemView.TrenutniSistem); }
             
             particleEngine.EmitterLocation = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
             particleEngine.Update();

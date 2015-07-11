@@ -18,7 +18,8 @@ namespace SpaceExplorer.Engine
         {
             TrenutniSistem = (Sistem)nodesakojimsamsesudario;
             this.name = nodesakojimsamsesudario.ImeSistemaKomePripada;
-            playerShip.Position = new Vector2(this.horizontalSize/2, this.verticalSize - playerShip.Sprite.Height - 40);
+            playerShip.Position = new Vector2(this.horizontalSize/2 - playerShip.Sprite.Origin.X, this.verticalSize - playerShip.Sprite.Height - 40);
+            playerShip.rotationAngle = 0f;
             Config.currentSpeed = 0;
         }
 

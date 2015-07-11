@@ -7,7 +7,7 @@ namespace SpaceExplorer.Engine
 {
     class Sprite
     {
-        SpriteSheet sheet;
+        public SpriteSheet sheet;
         int frame;
         double frameTimeRemaining;
         uint textureIndex;

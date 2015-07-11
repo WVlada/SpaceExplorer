@@ -16,6 +16,8 @@ namespace SpaceExplorer.Game
         {Players = new Player[4];
          for (int i = 0; i < Players.Length; i++)
          {Players[i] = new Player();}}
+        // staticki kontruktor se automatski poziva pre bilo kakvog pozivanja bilo kog membera
+        // ne moze se pozvati direktno
 
         public static void SpawnShip(PlayerIndex playerIndex)
         {
