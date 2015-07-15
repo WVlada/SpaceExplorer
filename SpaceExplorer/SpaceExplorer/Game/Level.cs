@@ -42,6 +42,7 @@ namespace SpaceExplorer.Game
 
             Sistem Sol = new Sistem(Config.PickASpoljniSPriteSheet("star"), "Sol", new Vector2(300, 300), new Sun(Config.PickASunSPriteSheet()), 9, null, new Vector2(300, 300), new Sprite(Config.PickASpoljniSPriteSheet()), new Vector2(Config.velicinaGameplayprozoraHorizontala / 2, Config.velicinaGameplayprozoraVertikala / 2));
             Sistem AlphaCentauri = new Sistem(Config.PickASpoljniSPriteSheet(), "Alpha Centauri", new Vector2(550, 430), new Sun(Config.PickASunSPriteSheet()), 6, null, new Vector2(350, 350), new Sprite(Config.PickASpoljniSPriteSheet()), new Vector2(Config.velicinaGameplayprozoraHorizontala / 2, Config.velicinaGameplayprozoraVertikala / 2));
+            Sistem AlphaCentauri2 = new Sistem(Config.PickASpoljniSPriteSheet(), "Alpha Centauri2", new Vector2(550, 100), new Sun(Config.PickASunSPriteSheet()), 6, null, new Vector2(350, 350), new Sprite(Config.PickASpoljniSPriteSheet()), new Vector2(Config.velicinaGameplayprozoraHorizontala / 2, Config.velicinaGameplayprozoraVertikala / 2));
         }
 
         public static void UcitajPozadinu(ContentManager content)

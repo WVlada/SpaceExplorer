@@ -121,6 +121,7 @@
     <Compile Include="Engine\Particle.cs" />
     <Compile Include="Engine\ParticleEngine.cs" />
     <Compile Include="Engine\Sistem.cs" />
+    <Compile Include="Engine\Views\SistemMenuView.cs" />
     <Compile Include="Engine\Views\SistemView.cs" />
     <Compile Include="Engine\Sprite.cs" />
     <Compile Include="Engine\SpriteSheet.cs" />

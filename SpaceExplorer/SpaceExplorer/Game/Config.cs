@@ -14,6 +14,7 @@ namespace SpaceExplorer.Game
         public static int VelicinaDesnogMenija = 300;
         public static int velicinaGameplayprozoraHorizontala;
         public static int velicinaGameplayprozoraVertikala;
+        public static int brzinaTrosenjaGoriva = 1000;
         
         public static float currentSpeed;
 

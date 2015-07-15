@@ -15,7 +15,7 @@ namespace SpaceExplorer.Engine
             { Nodes[i].Update(gameTime); }
         }
         public virtual void Update(GameTime gameTime)
-        { this.Move(this.Direction * this.Speed); this.Sprite.Update(gameTime); }
+        { this.Move(this.Direction * this.Speed); this.Sprite.Update(gameTime);}
         public virtual void Draw(SpriteBatch spriteBatch)
             { this.Sprite.Draw(spriteBatch, this.position); }
         //public virtual void Remove()
@@ -61,7 +61,7 @@ namespace SpaceExplorer.Engine
             if (parent != null)
             { parent.children.Add(this); }
         }
-        public void Move(Vector2 amount)
+        public virtual void Move(Vector2 amount)
         {   this.position += amount;
             foreach (Node nod in this.children)
                 { nod.Move(amount); }

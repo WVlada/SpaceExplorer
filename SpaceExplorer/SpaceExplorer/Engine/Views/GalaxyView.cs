@@ -20,6 +20,7 @@ namespace SpaceExplorer.Engine
         {
             playerShip.Position = new Vector2(Config.velicinaGameplayprozoraHorizontala / 2 - playerShip.Sprite.Origin.X, Config.velicinaGameplayprozoraVertikala);
             Config.currentSpeed = 0;
+            Config.brzinaTrosenjaGoriva = 1000;
         }
         public GalaxyView(GameNode playerShip, Sistem sistem)
         {

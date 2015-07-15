@@ -21,6 +21,7 @@ namespace SpaceExplorer.Engine
             playerShip.Position = new Vector2(this.horizontalSize/2 - playerShip.Sprite.Origin.X, this.verticalSize - playerShip.Sprite.Height - 40);
             playerShip.rotationAngle = 0f;
             Config.currentSpeed = 0;
+            Config.brzinaTrosenjaGoriva = 10000;
         }
 
         public override void Draw(SpriteBatch spriteBatch)

@@ -18,6 +18,9 @@ namespace SpaceExplorer.Game
         public ShipHealthBar shipHealthBar;
         public event RenderujSistem sudarSaSistemom;
         public static SpriteFont polozajUGalaksiji;
+        public int daljinaOdProslogSistema;
+        public Vector2 Position2;
+        public float kilometara;
 
         public PlayerShip(SpriteSheet spriteSheet)
             : base(spriteSheet)
@@ -32,8 +35,15 @@ namespace SpaceExplorer.Game
             this.shipEngine = new ShipEngine(Config.PlayerShipEngine);
             this.shipHealthBar = new ShipHealthBar(Config.ShipHealthBar);
             this.ExplosionSpriteSheet = Config.PlayerShipExplosionSpriteSheet;
+            this.kilometara = 0;
         }
-        
+
+        public override void Move(Vector2 amount)
+        {
+            base.Move(amount);
+            this.kilometara += (Math.Abs(amount.X) + Math.Abs(amount.Y)) / Config.brzinaTrosenjaGoriva; ;
+        }
+
         public override void Update(GameTime gameTime)
         {
             if (this.CollisionList != null)
@@ -53,12 +63,12 @@ namespace SpaceExplorer.Game
                 }
             }
             base.Update(gameTime);
-        }
+         }
         
         public void Collide(GameNode nodeSaKojimSamSeSudario)
         {
             // nije sjajno resenje jer ne mogu da se vratim u sistem iz kog sam izasao, mozda kad istrosim koju litru goriva da resetujem trenutni sistem?
-            if (nodeSaKojimSamSeSudario is Sistem && Config.TrenutniPogledi[0] is GalaxyView && nodeSaKojimSamSeSudario != SistemView.TrenutniSistem)  { Config.TrenutniPogledi[0] = new SistemView(nodeSaKojimSamSeSudario,this); }
+            if (nodeSaKojimSamSeSudario is Sistem && Config.TrenutniPogledi[0] is GalaxyView && nodeSaKojimSamSeSudario != SistemView.TrenutniSistem) { Config.TrenutniPogledi[0] = new SistemView(nodeSaKojimSamSeSudario, this); Config.TrenutniPogledi[1] = new SistemMenuView(); }
 
             if (nodeSaKojimSamSeSudario is Enemy && Config.TrenutniPogledi[0] is SistemView)
             {
@@ -86,7 +96,9 @@ namespace SpaceExplorer.Game
             spriteBatch.Draw(this.Sprite.Texture, this.Position + this.Sprite.Origin, this.Sprite.FrameBounds, Color.White, this.rotationAngle, this.Sprite.Origin, 1f, SpriteEffects.None, 0f);
             if (Config.TrenutniPogledi[0] is GalaxyView)
             { spriteBatch.DrawString(polozajUGalaksiji, this.Position.ToString().TrimStart(char.Parse("{")).TrimEnd(char.Parse("}")), new Vector2(Config.TrenutniPogledi[0].horizontalSize/2,0), Color.Wheat); }
-            }
+            spriteBatch.DrawString(polozajUGalaksiji, this.kilometara.ToString("0.##"), new Vector2(Config.TrenutniPogledi[0].horizontalSize / 2 - 100, 0), Color.Wheat); 
+                
+        }
 
         // pomeranje svake sekunde za po (1,1)
         Timer tajmer;
