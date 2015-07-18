@@ -32,7 +32,7 @@ namespace SpaceExplorer.Engine
         public GalaxyView(PlayerShip playerShip)
         {
             playerShip.sudarSaSistemom += new UcitajSistem(Ship_sudarSaSistemom);
-            playerShip.Position = new Vector2(Config.velicinaGameplayprozoraHorizontala / 2 - playerShip.Sprite.Origin.X, Config.velicinaGameplayprozoraVertikala);
+            playerShip.Position = new Vector2(Config.velicinaGameplayprozoraHorizontala / 2 - playerShip.Sprite.Origin.X, Config.velicinaGameplayprozoraVertikala - 100);
         }
         public GalaxyView()
         {

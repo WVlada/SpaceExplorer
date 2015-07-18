@@ -20,7 +20,7 @@ namespace SpaceExplorer.Game
 
         public static int PlayerShipSpeed = 1;
         public static int PlayerShipHealth = 100;
-        public static Vector2 PlayerShipSpawnPosition = new Vector2(Screen_Width/2-64, Screen_Height-64);
+        public static Vector2 PlayerShipSpawnPosition = new Vector2(Screen_Width/2-64, Screen_Height-164);
         public static int DaljinaZaKoliziju = 30;
 
         public static SpriteSheet AsteroidSpriteSheet = new SpriteSheet("asteroid", 5, 6, 15, 30, SpriteSheetMode.Normalan);
