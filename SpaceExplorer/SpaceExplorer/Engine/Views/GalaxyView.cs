@@ -23,11 +23,10 @@ namespace SpaceExplorer.Engine
             // drzacu ovih sto dok ne implementiram da ne mogu da se vratim u sistem cim izadjem iz njega
             playerShip.Position = new Vector2(sistem.Position.X - playerShip.Sprite.Origin.X - 100, sistem.Position.Y - playerShip.Sprite.Origin.Y);
         }
-
         void Ship_sudarSaSistemom(Sistem sistem, PlayerShip playerShip)
         {
            Config.TrenutniPogledi[0] = new SistemView(sistem, playerShip); Config.TrenutniPogledi[1] = new SistemMenuView();
-           playerShip.Position = new Vector2(Config.velicinaGameplayprozoraHorizontala / 2 - playerShip.Sprite.Origin.X, Config.velicinaGameplayprozoraVertikala - 100);
+           playerShip.Position = new Vector2(Config.velicinaGameplayprozoraHorizontala / 2 - playerShip.Sprite.Origin.X, Config.velicinaGameplayprozoraVertikala - playerShip.Sprite.Height);
            Config.currentSpeed = 0;
         }
         public GalaxyView(PlayerShip playerShip)
