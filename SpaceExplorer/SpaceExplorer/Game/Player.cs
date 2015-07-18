@@ -13,11 +13,17 @@ namespace SpaceExplorer.Game
         KeyboardState lastKeyboardState;
         
         static Player()
-        {Players = new Player[4];
+        {
+         Players = new Player[4];
          for (int i = 0; i < Players.Length; i++)
-         {Players[i] = new Player();}}
+            {
+             Players[i] = new Player();
+            }
+         SpawnShip(PlayerIndex.One);
+        }
         // staticki kontruktor se automatski poziva pre bilo kakvog pozivanja bilo kog membera
         // ne moze se pozvati direktno
+        // zasto mi onda baca exception kad hocu da registrujem event za brod, da je brod NULL?
 
         public static void SpawnShip(PlayerIndex playerIndex)
         {

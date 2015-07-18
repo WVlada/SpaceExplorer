@@ -30,6 +30,7 @@ namespace SpaceExplorer
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+           
             graphics.PreferredBackBufferHeight = Config.Screen_Height;
             graphics.PreferredBackBufferWidth = Config.Screen_Width;
             this.IsMouseVisible = true;
@@ -37,11 +38,11 @@ namespace SpaceExplorer
 
         protected override void Initialize()
         {
-            base.Initialize();
+           base.Initialize();
         }
-
         protected override void LoadContent()
         {
+
             spriteBatch = new SpriteBatch(GraphicsDevice);
             GalaxyView.UcitajSadrzaj(this.Content);
             GalaxyMenuView.UcitajPozadinu(this.Content);
@@ -49,16 +50,18 @@ namespace SpaceExplorer
             Sistem.UcitajSadrzaj(this.Content);
             //Statistika.UcitajFontove(this.Content);
             //Sprite.UcitajFontove(this.Content);
+            
             PlayerShip.ucitajPodatke(this.Content);
-
             //Level.UcitajPozadinu(this.Content);
             
             
+            // ovde je bitan redosled jer mi se ne bio ucitale Origin vredsnosti za PlayerShip!!!!
             SpriteSheet.UcitajSadrzaj(this.Content, this.GraphicsDevice);
-            Player.SpawnShip(PlayerIndex.One);
+            Player Igrac = new Player();
+
             GalaxyMenuView.UcitajPozadinu(this.Content);
             Level.UcitajNeprijatelje();
-
+            
             // particle engine
             List<Texture2D> textures = new List<Texture2D>();
             textures.Add(Content.Load<Texture2D>("circle"));
@@ -94,7 +97,7 @@ namespace SpaceExplorer
 
             Sistem.UpdateNodes(gameTime);
 
-            // drzanje player u granicama - treba da implementirar izlazak iz sistema - mozda sa eventom?
+            // drzanje player u granicama - treba da implementirar izlazak iz sistema - mozda sa eventom? !!!!!Player.IzasaoSamIzSistema!!!!! - ovo sa eventom
             if (PlayerShip.PlayerShips[0].Position.X < 0) { PlayerShip.PlayerShips[0].Position = new Vector2(0, PlayerShip.PlayerShips[0].Position.Y); if (Config.TrenutniPogledi[0] is SistemView) Config.TrenutniPogledi[0] = new GalaxyView(PlayerShip.PlayerShips[0], SistemView.TrenutniSistem); Config.TrenutniPogledi[1] = new GalaxyMenuView(); }
             if (PlayerShip.PlayerShips[0].Position.Y < 0) { PlayerShip.PlayerShips[0].Position = new Vector2(PlayerShip.PlayerShips[0].Position.X, 0); if (Config.TrenutniPogledi[0] is SistemView) Config.TrenutniPogledi[0] = new GalaxyView(PlayerShip.PlayerShips[0], SistemView.TrenutniSistem); Config.TrenutniPogledi[1] = new GalaxyMenuView(); }
             if (PlayerShip.PlayerShips[0].Position.X > Config.TrenutniPogledi[0].horizontalSize - PlayerShip.PlayerShips[0].Sprite.Width) { PlayerShip.PlayerShips[0].Position = new Vector2(Config.TrenutniPogledi[0].horizontalSize - PlayerShip.PlayerShips[0].Sprite.Width, PlayerShip.PlayerShips[0].Position.Y); if (Config.TrenutniPogledi[0] is SistemView) Config.TrenutniPogledi[0] = new GalaxyView(PlayerShip.PlayerShips[0], SistemView.TrenutniSistem); Config.TrenutniPogledi[1] = new GalaxyMenuView(); }
@@ -131,8 +134,9 @@ namespace SpaceExplorer
                         spriteBatch.Begin();
                         
                             vju.Draw(spriteBatch);
-                               
-                        Player.Players[0].Ship.Draw(spriteBatch);
+
+                          PlayerShip.PlayerShips[0].Draw(spriteBatch);
+                        //Player.Players[0].Ship.Draw(spriteBatch);
                         spriteBatch.End();
                     } 
                 }

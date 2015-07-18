@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace SpaceExplorer.Game
 {
-    delegate void RenderujSistem(object sender, EventArgs e);
+    delegate void UcitajSistem(Sistem vju, PlayerShip ship);
     
     class PlayerShip : Ship
     {
@@ -16,11 +16,14 @@ namespace SpaceExplorer.Game
 
         public ShipEngine shipEngine;
         public ShipHealthBar shipHealthBar;
-        public event RenderujSistem sudarSaSistemom;
+        public event UcitajSistem sudarSaSistemom;
         public static SpriteFont polozajUGalaksiji;
         public int daljinaOdProslogSistema;
         public Vector2 Position2;
         public float kilometara;
+        public float kilometaraZaVracanjeUSistem;
+        public bool spremanZaPonovanUlazakUSistem;
+
 
         public PlayerShip(SpriteSheet spriteSheet)
             : base(spriteSheet)
@@ -36,12 +39,17 @@ namespace SpaceExplorer.Game
             this.shipHealthBar = new ShipHealthBar(Config.ShipHealthBar);
             this.ExplosionSpriteSheet = Config.PlayerShipExplosionSpriteSheet;
             this.kilometara = 0;
+            this.kilometaraZaVracanjeUSistem = 0;
+            this.spremanZaPonovanUlazakUSistem = false;
+            // da registrujem event tek nakon sto napravim brod
+            Config.TrenutniPogledi[0] = new GalaxyView(this);
         }
 
         public override void Move(Vector2 amount)
         {
             base.Move(amount);
-            this.kilometara += (Math.Abs(amount.X) + Math.Abs(amount.Y)) / Config.brzinaTrosenjaGoriva; ;
+            this.kilometara += (Math.Abs(amount.X) + Math.Abs(amount.Y)) / Config.brzinaTrosenjaGoriva;
+            this.kilometaraZaVracanjeUSistem = kilometara;
         }
 
         public override void Update(GameTime gameTime)
@@ -68,8 +76,10 @@ namespace SpaceExplorer.Game
         public void Collide(GameNode nodeSaKojimSamSeSudario)
         {
             // nije sjajno resenje jer ne mogu da se vratim u sistem iz kog sam izasao, mozda kad istrosim koju litru goriva da resetujem trenutni sistem?
-            if (nodeSaKojimSamSeSudario is Sistem && Config.TrenutniPogledi[0] is GalaxyView && nodeSaKojimSamSeSudario != SistemView.TrenutniSistem) { Config.TrenutniPogledi[0] = new SistemView(nodeSaKojimSamSeSudario, this); Config.TrenutniPogledi[1] = new SistemMenuView(); }
-
+            if (nodeSaKojimSamSeSudario is Sistem && Config.TrenutniPogledi[0] is GalaxyView)
+                //{ Config.TrenutniPogledi[0] = new SistemView(nodeSaKojimSamSeSudario, this); Config.TrenutniPogledi[1] = new SistemMenuView(); }
+                this.sudarSaSistemom(nodeSaKojimSamSeSudario as Sistem, this);
+            //nodeSaKojimSamSeSudario != SistemView.TrenutniSistem
             if (nodeSaKojimSamSeSudario is Enemy && Config.TrenutniPogledi[0] is SistemView)
             {
                 this.TakeDamage(nodeSaKojimSamSeSudario.Health);
