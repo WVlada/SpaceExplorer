@@ -103,7 +103,7 @@ namespace SpaceExplorer
                 PlayerShip.PlayerShips[0].Position = new Vector2(0 - PlayerShip.PlayerShips[0].Sprite.Width / 2, PlayerShip.PlayerShips[0].Position.Y);
                 
                 if (Config.TrenutniPogledi[0] is SistemView) 
-                    Config.TrenutniPogledi[0] = new GalaxyView(PlayerShip.PlayerShips[0], SistemView.TrenutniSistem); 
+                    Config.TrenutniPogledi[0] = new GalaxyView(Player.Players[0].Ship, SistemView.TrenutniSistem); 
                     Config.TrenutniPogledi[1] = new GalaxyMenuView(); 
             }
 
@@ -111,21 +111,22 @@ namespace SpaceExplorer
             {
                 PlayerShip.PlayerShips[0].Position = new Vector2(PlayerShip.PlayerShips[0].Position.X, 0 - PlayerShip.PlayerShips[0].Sprite.Height / 2 );
             
-                if (Config.TrenutniPogledi[0] is SistemView) Config.TrenutniPogledi[0] = new GalaxyView(PlayerShip.PlayerShips[0], SistemView.TrenutniSistem);
+                if (Config.TrenutniPogledi[0] is SistemView)
+                    Config.TrenutniPogledi[0] = new GalaxyView(Player.Players[0].Ship, SistemView.TrenutniSistem);
                     Config.TrenutniPogledi[1] = new GalaxyMenuView(); 
             }
             if (PlayerShip.PlayerShips[0].Position.X > Config.TrenutniPogledi[0].horizontalSize - PlayerShip.PlayerShips[0].Sprite.Width/2)
             {
                 PlayerShip.PlayerShips[0].Position = new Vector2(Config.TrenutniPogledi[0].horizontalSize - PlayerShip.PlayerShips[0].Sprite.Width / 2, PlayerShip.PlayerShips[0].Position.Y);
-                if (Config.TrenutniPogledi[0] is SistemView) 
-                    Config.TrenutniPogledi[0] = new GalaxyView(PlayerShip.PlayerShips[0], SistemView.TrenutniSistem); 
+                if (Config.TrenutniPogledi[0] is SistemView)
+                    Config.TrenutniPogledi[0] = new GalaxyView(Player.Players[0].Ship, SistemView.TrenutniSistem); 
                     Config.TrenutniPogledi[1] = new GalaxyMenuView(); 
             }
             if (PlayerShip.PlayerShips[0].Position.Y > Config.TrenutniPogledi[0].verticalSize - PlayerShip.PlayerShips[0].Sprite.Height / 2) 
             {
                 PlayerShip.PlayerShips[0].Position = new Vector2(PlayerShip.PlayerShips[0].Position.X, Config.TrenutniPogledi[0].verticalSize - PlayerShip.PlayerShips[0].Sprite.Height / 2);
-                if (Config.TrenutniPogledi[0] is SistemView) 
-                    Config.TrenutniPogledi[0] = new GalaxyView(PlayerShip.PlayerShips[0], SistemView.TrenutniSistem); 
+                if (Config.TrenutniPogledi[0] is SistemView)
+                    Config.TrenutniPogledi[0] = new GalaxyView(Player.Players[0].Ship, SistemView.TrenutniSistem); 
                     Config.TrenutniPogledi[1] = new GalaxyMenuView(); 
             }
             

@@ -40,7 +40,7 @@ namespace SpaceExplorer.Game
             this.ExplosionSpriteSheet = Config.PlayerShipExplosionSpriteSheet;
             this.kilometara = 0;
             this.kilometaraZaVracanjeUSistem = 0;
-            this.spremanZaPonovanUlazakUSistem = false;
+            this.spremanZaPonovanUlazakUSistem = true;
             // da registrujem event tek nakon sto napravim brod
             Config.TrenutniPogledi[0] = new GalaxyView(this);
         }
@@ -49,7 +49,8 @@ namespace SpaceExplorer.Game
         {
             base.Move(amount);
             this.kilometara += (Math.Abs(amount.X) + Math.Abs(amount.Y)) / Config.brzinaTrosenjaGoriva;
-            this.kilometaraZaVracanjeUSistem = kilometara;
+            this.kilometaraZaVracanjeUSistem += (Math.Abs(amount.X) + Math.Abs(amount.Y)) / Config.brzinaTrosenjaGoriva;
+            if (kilometaraZaVracanjeUSistem >= 1) { this.spremanZaPonovanUlazakUSistem = true;}
         }
 
         public override void Update(GameTime gameTime)
