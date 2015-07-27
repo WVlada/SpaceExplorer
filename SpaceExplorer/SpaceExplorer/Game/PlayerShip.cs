@@ -50,7 +50,7 @@ namespace SpaceExplorer.Game
             base.Move(amount);
             this.kilometara += (Math.Abs(amount.X) + Math.Abs(amount.Y)) / Config.brzinaTrosenjaGoriva;
             this.kilometaraZaVracanjeUSistem += (Math.Abs(amount.X) + Math.Abs(amount.Y)) / Config.brzinaTrosenjaGoriva;
-            if (kilometaraZaVracanjeUSistem >= 1) { this.spremanZaPonovanUlazakUSistem = true;}
+            if (kilometaraZaVracanjeUSistem >= Config.kilometaraZaVracanjeuSistem) { this.spremanZaPonovanUlazakUSistem = true;}
         }
 
         public override void Update(GameTime gameTime)
