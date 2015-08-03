@@ -50,7 +50,7 @@ namespace SpaceExplorer.Game
             base.Move(amount);
             this.kilometara += (Math.Abs(amount.X) + Math.Abs(amount.Y)) / Config.brzinaTrosenjaGoriva;
             this.kilometaraZaVracanjeUSistem += (Math.Abs(amount.X) + Math.Abs(amount.Y)) / Config.brzinaTrosenjaGoriva;
-            if (kilometaraZaVracanjeUSistem >= Config.kilometaraZaVracanjeuSistem) { this.spremanZaPonovanUlazakUSistem = true; this.kilometaraZaVracanjeUSistem = 0; }
+            if (kilometaraZaVracanjeUSistem >= Config.kilometaraZaVracanjeuSistem && Config.TrenutniPogledi[0] is GalaxyView) { this.spremanZaPonovanUlazakUSistem = true; this.kilometaraZaVracanjeUSistem = 0; }
         }
 
         public override void Update(GameTime gameTime)
@@ -77,7 +77,7 @@ namespace SpaceExplorer.Game
         public void Collide(GameNode nodeSaKojimSamSeSudario)
         {
             // nije sjajno resenje jer ne mogu da se vratim u sistem iz kog sam izasao, mozda kad istrosim koju litru goriva da resetujem trenutni sistem?
-            if (nodeSaKojimSamSeSudario is Sistem && Config.TrenutniPogledi[0] is GalaxyView && this.spremanZaPonovanUlazakUSistem == true)
+            if (nodeSaKojimSamSeSudario is Sistem && Config.TrenutniPogledi[0] is GalaxyView) 
                 //{ Config.TrenutniPogledi[0] = new SistemView(nodeSaKojimSamSeSudario, this); Config.TrenutniPogledi[1] = new SistemMenuView(); }
                 this.sudarSaSistemom(nodeSaKojimSamSeSudario as Sistem, this);
             //nodeSaKojimSamSeSudario != SistemView.TrenutniSistem

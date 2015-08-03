@@ -32,6 +32,8 @@ namespace SpaceExplorer.Engine
                 Config.TrenutniPogledi[0] = new SistemView(sistem, playerShip); Config.TrenutniPogledi[1] = new SistemMenuView();
                 playerShip.Position = new Vector2(Config.velicinaGameplayprozoraHorizontala / 2 - playerShip.Sprite.Origin.X, Config.velicinaGameplayprozoraVertikala - playerShip.Sprite.Height);
                 Config.currentSpeed = 0;
+                playerShip.spremanZaPonovanUlazakUSistem = false;
+                playerShip.kilometaraZaVracanjeUSistem = 0;
             }
         }
         //ovaj se poziva samo pri ucitavanju,tj sponovanju playerShipa
