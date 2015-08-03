@@ -50,7 +50,7 @@ namespace SpaceExplorer.Game
             base.Move(amount);
             this.kilometara += (Math.Abs(amount.X) + Math.Abs(amount.Y)) / Config.brzinaTrosenjaGoriva;
             this.kilometaraZaVracanjeUSistem += (Math.Abs(amount.X) + Math.Abs(amount.Y)) / Config.brzinaTrosenjaGoriva;
-            if (kilometaraZaVracanjeUSistem >= Config.kilometaraZaVracanjeuSistem) { this.spremanZaPonovanUlazakUSistem = true;}
+            if (kilometaraZaVracanjeUSistem >= Config.kilometaraZaVracanjeuSistem) { this.spremanZaPonovanUlazakUSistem = true; this.kilometaraZaVracanjeUSistem = 0; }
         }
 
         public override void Update(GameTime gameTime)
@@ -77,7 +77,7 @@ namespace SpaceExplorer.Game
         public void Collide(GameNode nodeSaKojimSamSeSudario)
         {
             // nije sjajno resenje jer ne mogu da se vratim u sistem iz kog sam izasao, mozda kad istrosim koju litru goriva da resetujem trenutni sistem?
-            if (nodeSaKojimSamSeSudario is Sistem && Config.TrenutniPogledi[0] is GalaxyView)
+            if (nodeSaKojimSamSeSudario is Sistem && Config.TrenutniPogledi[0] is GalaxyView && this.spremanZaPonovanUlazakUSistem == true)
                 //{ Config.TrenutniPogledi[0] = new SistemView(nodeSaKojimSamSeSudario, this); Config.TrenutniPogledi[1] = new SistemMenuView(); }
                 this.sudarSaSistemom(nodeSaKojimSamSeSudario as Sistem, this);
             //nodeSaKojimSamSeSudario != SistemView.TrenutniSistem
@@ -107,8 +107,10 @@ namespace SpaceExplorer.Game
             spriteBatch.Draw(this.Sprite.Texture, this.Position + this.Sprite.Origin, this.Sprite.FrameBounds, Color.White, this.rotationAngle, this.Sprite.Origin, 1f, SpriteEffects.None, 0f);
             if (Config.TrenutniPogledi[0] is GalaxyView)
             { spriteBatch.DrawString(polozajUGalaksiji, this.Position.ToString().TrimStart(char.Parse("{")).TrimEnd(char.Parse("}")), new Vector2(Config.TrenutniPogledi[0].horizontalSize/2,0), Color.Wheat); }
-            spriteBatch.DrawString(polozajUGalaksiji, this.kilometara.ToString("0.##"), new Vector2(Config.TrenutniPogledi[0].horizontalSize / 2 - 100, 0), Color.Wheat); 
-                
+            spriteBatch.DrawString(polozajUGalaksiji, this.kilometara.ToString("0.##"), new Vector2(Config.TrenutniPogledi[0].horizontalSize / 2 - 100, 0), Color.Wheat);
+            spriteBatch.DrawString(polozajUGalaksiji, this.kilometaraZaVracanjeUSistem.ToString("0.##"), new Vector2(Config.TrenutniPogledi[0].horizontalSize / 2 - 300, 0), Color.Wheat);
+            spriteBatch.DrawString(polozajUGalaksiji, this.spremanZaPonovanUlazakUSistem.ToString(), new Vector2(Config.TrenutniPogledi[0].horizontalSize / 2 - 400, 0), Color.Wheat); 
+        
         }
 
         // pomeranje svake sekunde za po (1,1)

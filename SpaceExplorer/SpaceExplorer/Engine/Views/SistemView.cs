@@ -22,6 +22,7 @@ namespace SpaceExplorer.Engine
             playerShip.rotationAngle = 0f;
             Config.currentSpeed = 0;
             Config.brzinaTrosenjaGoriva = 10000;
+            playerShip.spremanZaPonovanUlazakUSistem = false;
         }
 
         public override void Draw(SpriteBatch spriteBatch)

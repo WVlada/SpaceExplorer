@@ -16,11 +16,11 @@ namespace SpaceExplorer.Engine
         public string imeSistemaKomePripada = "Galaksija";
         static SpriteFont imenaSistema;
 
+        // ovaj se poziva kada se izlazi iz nekog sistema
         public GalaxyView(PlayerShip playerShip, Sistem sistem)
         {
             Config.currentSpeed = 0;
             Config.brzinaTrosenjaGoriva = 1000;
-            // drzacu ovih sto dok ne implementiram da ne mogu da se vratim u sistem cim izadjem iz njega
             playerShip.spremanZaPonovanUlazakUSistem = false;
             playerShip.kilometaraZaVracanjeUSistem = 0;
             playerShip.Position = new Vector2(sistem.Position.X - playerShip.Sprite.Origin.X, sistem.Position.Y - playerShip.Sprite.Origin.Y);
@@ -34,11 +34,13 @@ namespace SpaceExplorer.Engine
                 Config.currentSpeed = 0;
             }
         }
+        //ovaj se poziva samo pri ucitavanju,tj sponovanju playerShipa
         public GalaxyView(PlayerShip playerShip)
         {
             playerShip.sudarSaSistemom += new UcitajSistem(Ship_sudarSaSistemom);
             playerShip.Position = new Vector2(Config.velicinaGameplayprozoraHorizontala / 2 - playerShip.Sprite.Origin.X, Config.velicinaGameplayprozoraVertikala - 100);
         }
+        //ovaj se ucitava u straticku listu na pocetku, samo da postoji
         public GalaxyView()
         {
         }
