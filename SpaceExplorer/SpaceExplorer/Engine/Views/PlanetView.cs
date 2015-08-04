@@ -27,7 +27,7 @@ namespace SpaceExplorer.Engine
         public override void Draw(SpriteBatch spriteBatch)
         {
                 spriteBatch.Draw(donjiMeni,DonjiDeoEkrana,Color.Red);
-                spriteBatch.Draw(planeta.Sprite.Texture, DonjiDeoEkrana, Color.Red);
+                spriteBatch.Draw(planeta.Sprite.Texture, new Rectangle(0,0,100,100), Color.Red);
         }
 
         public static void UcitajPlanetView(ContentManager content)

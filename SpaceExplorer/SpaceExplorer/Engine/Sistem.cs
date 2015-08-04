@@ -38,7 +38,7 @@ namespace SpaceExplorer.Engine
             PlayerShip.PlayerShips[0].CollisionList.Add(this);
             for (int i = 1; i <= brojPlaneta; i++)
             {
-                Planet planet = new Planet(Config.PlanetSpriteSheet, brojPlaneta, i);
+                Planet planet = new Planet(Config.PlanetSpriteSheet, brojPlaneta, i, this);
                 //planet.Position = new Vector2(100 * i, 100 * i);
                 Planete.Add(planet);
             }

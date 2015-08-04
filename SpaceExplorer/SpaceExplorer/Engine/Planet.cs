@@ -14,12 +14,12 @@ namespace SpaceExplorer.Engine
     {
         public static List<Planet> SvePlanete = new List<Planet>();
         
-        Sistem sistem;
+        public Sistem sistem;
         public SpriteSheet spoljnaTeksuta;
         
-        public Planet(SpriteSheet spriteSheet, int brojPlaneta, int brojOvePlanete) : base(spriteSheet) 
+        public Planet(SpriteSheet spriteSheet, int brojPlaneta, int brojOvePlanete, Sistem sistemKomePripada) : base(spriteSheet) 
         {
-            this.sistem = sistem;
+            this.sistem = sistemKomePripada;
             this.Position = NapraviPrimitive.randomMEstoZaPlanetu(Config.TrenutniPogledi[0], brojPlaneta, brojOvePlanete, this.Sprite.sheet);
             SvePlanete.Add(this);
             

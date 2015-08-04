@@ -63,12 +63,19 @@ namespace SpaceExplorer.Game
                 {
                     if (this.CollisionList.Count != 0)
                     {
-                        if (PlayerShip.PlayerShips[0].CollisionList[i] is Sistem || PlayerShip.PlayerShips[0].CollisionList[i] is Planet)
+                        if (PlayerShip.PlayerShips[0].CollisionList[i] is Sistem)
                         {
 
                             if (Node.CheckCollision(PlayerShip.PlayerShips[0], PlayerShip.PlayerShips[0].CollisionList[i]))
                             { this.Collide(this.CollisionList[i]); }
                             //this mi zamenjjuje -> PlayerShip.PlayerShips[0]
+                        }
+                        if (PlayerShip.PlayerShips[0].CollisionList[i] is Planet && SistemView.TrenutniSistem != null && SistemView.TrenutniSistem.Ime == ((Planet)PlayerShip.PlayerShips[0].CollisionList[i]).sistem.Ime)
+                        {
+                            if (Node.CheckCollision(PlayerShip.PlayerShips[0], PlayerShip.PlayerShips[0].CollisionList[i]))
+                               { this.Collide(this.CollisionList[i]); }
+                               //this mi zamenjjuje -> PlayerShip.PlayerShips[0]
+                            
                         }
                     }
                 }

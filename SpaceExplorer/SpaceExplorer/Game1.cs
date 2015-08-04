@@ -163,7 +163,7 @@ namespace SpaceExplorer
                         spriteBatch.Begin();
                         
                             vju.Draw(spriteBatch);
-
+                        //if (!(vju is PlanetView))
                           PlayerShip.PlayerShips[0].Draw(spriteBatch);
                         //Player.Players[0].Ship.Draw(spriteBatch);
                         spriteBatch.End();
