@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Content;
 namespace SpaceExplorer.Game
 {
     delegate void UcitajSistem(Sistem vju, PlayerShip ship);
+    delegate void UcitajPlanetu(Planet planeta, PlayerShip ship);
     
     class PlayerShip : Ship
     {
@@ -17,6 +18,7 @@ namespace SpaceExplorer.Game
         public ShipEngine shipEngine;
         public ShipHealthBar shipHealthBar;
         public event UcitajSistem sudarSaSistemom;
+        public event UcitajPlanetu sudarSaPlanetom;
         public static SpriteFont polozajUGalaksiji;
         public int daljinaOdProslogSistema;
         public Vector2 Position2;
@@ -61,7 +63,7 @@ namespace SpaceExplorer.Game
                 {
                     if (this.CollisionList.Count != 0)
                     {
-                        if (PlayerShip.PlayerShips[0].CollisionList[i] is Sistem)
+                        if (PlayerShip.PlayerShips[0].CollisionList[i] is Sistem || PlayerShip.PlayerShips[0].CollisionList[i] is Planet)
                         {
 
                             if (Node.CheckCollision(PlayerShip.PlayerShips[0], PlayerShip.PlayerShips[0].CollisionList[i]))
@@ -81,6 +83,9 @@ namespace SpaceExplorer.Game
                 //{ Config.TrenutniPogledi[0] = new SistemView(nodeSaKojimSamSeSudario, this); Config.TrenutniPogledi[1] = new SistemMenuView(); }
                 this.sudarSaSistemom(nodeSaKojimSamSeSudario as Sistem, this);
             //nodeSaKojimSamSeSudario != SistemView.TrenutniSistem
+            if (nodeSaKojimSamSeSudario is Planet && Config.TrenutniPogledi[0] is SistemView)
+                this.sudarSaPlanetom(nodeSaKojimSamSeSudario as Planet, this);
+
             if (nodeSaKojimSamSeSudario is Enemy && Config.TrenutniPogledi[0] is SistemView)
             {
                 this.TakeDamage(nodeSaKojimSamSeSudario.Health);

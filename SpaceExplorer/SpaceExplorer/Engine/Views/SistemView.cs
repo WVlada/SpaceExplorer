@@ -23,6 +23,12 @@ namespace SpaceExplorer.Engine
             Config.currentSpeed = 0;
             Config.brzinaTrosenjaGoriva = 10000;
             playerShip.spremanZaPonovanUlazakUSistem = false;
+            playerShip.sudarSaPlanetom += new UcitajPlanetu(playerShip_sudarSaPlanetom);
+        }
+
+        void playerShip_sudarSaPlanetom(Planet planeta, PlayerShip playerShip)
+        {
+            Config.TrenutniPogledi[0] = new PlanetView(planeta, playerShip); Config.TrenutniPogledi[1] = new PlanetMenuView();
         }
 
         public override void Draw(SpriteBatch spriteBatch)

@@ -49,6 +49,7 @@ namespace SpaceExplorer
             SistemMenuView.UcitajPozadinu(this.Content);
             PlanetMenuView.UcitajPozadinu(this.Content);
             Sistem.UcitajSadrzaj(this.Content);
+            PlanetView.UcitajPlanetView(this.Content);
             //Statistika.UcitajFontove(this.Content);
             //Sprite.UcitajFontove(this.Content);
             
