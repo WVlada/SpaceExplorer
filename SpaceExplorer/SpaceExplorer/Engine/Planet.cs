@@ -36,7 +36,7 @@ namespace SpaceExplorer.Engine
         {
             foreach (Planet planetica in SvePlanete)
             {
-                 planetica.modelPlanete = content.Load<Model>("Models\\AlienPlanet");
+                 planetica.modelPlanete = content.Load<Model>("Models\\AlienPlanet2");
             }
         }
 

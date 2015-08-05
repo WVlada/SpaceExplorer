@@ -18,7 +18,7 @@ namespace SpaceExplorer.Engine
         public Planet planeta;
         Vector3 modelPosition = new Vector3(0, 0, 0);
         float modelRotation = 0.0f;
-        Vector3 cameraPosition = new Vector3(0.0f, 50.0f, 50.0f);
+        Vector3 cameraPosition = new Vector3(0.0f, 0.0f, 1500.0f);
 
         public PlanetView(Planet planet, PlayerShip playerShip)
         {
@@ -47,8 +47,8 @@ namespace SpaceExplorer.Engine
                     effect.View = Matrix.CreateLookAt(cameraPosition,
                     Vector3.Zero, Vector3.Up);
                     effect.Projection = Matrix.CreatePerspectiveFieldOfView(
-                    MathHelper.ToRadians(45.0f), Game1.aspectRatio,
-                    1.0f, 10000.0f);
+                    MathHelper.ToRadians(45.0f), 1.33f,
+                    1f, 10000.0f);
                 }
                 // Draw the mesh, using the effects set above.
                 mesh.Draw();
@@ -58,7 +58,7 @@ namespace SpaceExplorer.Engine
         {
             // Allows the game to exit
             modelRotation += (float)gameTime.ElapsedGameTime.TotalMilliseconds *
-                MathHelper.ToRadians(-0.1f);
+                MathHelper.ToRadians(-0.02f);
 
             base.Update(gameTime);
         }
