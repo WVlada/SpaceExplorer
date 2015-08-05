@@ -25,6 +25,9 @@ namespace SpaceExplorer
         Viewport defaultViewport;
         Viewport leftViewport;
         Viewport rightViewport;
+
+        //3D Model
+        public static float aspectRatio;
         
         public Game1()
         {
@@ -79,6 +82,10 @@ namespace SpaceExplorer
             leftViewport.Width = Config.Screen_Width - Config.VelicinaDesnogMenija;
             rightViewport.Width = Config.VelicinaDesnogMenija;
             rightViewport.X = leftViewport.Width;
+
+            // 3d model planete
+            Planet.UcitajPlanetice(this.Content);
+            aspectRatio = graphics.GraphicsDevice.Viewport.AspectRatio;
             }
             
         protected override void UnloadContent()
@@ -134,7 +141,13 @@ namespace SpaceExplorer
             
             particleEngine.EmitterLocation = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
             particleEngine.Update();
-                        
+            
+            // Planet rotacija
+            foreach (View vju in Config.TrenutniPogledi)
+                {
+                    vju.Update(gameTime);   
+                }
+
         }
 
         protected override void Draw(GameTime gameTime)
