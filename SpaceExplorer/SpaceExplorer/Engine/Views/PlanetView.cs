@@ -28,8 +28,9 @@ namespace SpaceExplorer.Engine
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(donjiMeni, DonjiDeoEkrana, Color.Red);
-            spriteBatch.Draw(planeta.Sprite.Texture, new Rectangle(0, 0, 100, 100), Color.Red);
+            spriteBatch.Draw(donjiMeni, DonjiDeoEkrana, Color.White);
+            
+            planeta.Draw(spriteBatch);
             
             // kopiranje postojecih transformacija
             Matrix[] transforms = new Matrix[planeta.modelPlanete.Bones.Count];
@@ -40,7 +41,7 @@ namespace SpaceExplorer.Engine
                 // as our camera and projection.
                 foreach (BasicEffect effect in mesh.Effects)
                 {
-                    effect.EnableDefaultLighting();
+                    //effect.EnableDefaultLighting();
                     effect.World = transforms[mesh.ParentBone.Index] *
                     Matrix.CreateRotationY(modelRotation)
                     * Matrix.CreateTranslation(modelPosition);
@@ -64,7 +65,7 @@ namespace SpaceExplorer.Engine
         }
         public static void UcitajPlanetView(ContentManager content)
         {
-            donjiMeni = content.Load<Texture2D>("dot");
+            donjiMeni = content.Load<Texture2D>("Models\\Gas Giant-Red copy4");
         }
 
     }
