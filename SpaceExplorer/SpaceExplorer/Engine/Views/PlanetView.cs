@@ -14,21 +14,27 @@ namespace SpaceExplorer.Engine
     {
 
         public Rectangle DonjiDeoEkrana;
+        public Rectangle GornjiDeoEkrana;
         public static Texture2D donjiMeni;
+        public static Texture2D gornjiMeni;
         public Planet planeta;
-        Vector3 modelPosition = new Vector3(0, 0, 0);
+        // Minus 30 je velicina gornjeg menija, ne znam zasto mora -
+        Vector3 modelPosition = new Vector3(0, 200 - 50, 0);
         float modelRotation = 0.0f;
         Vector3 cameraPosition = new Vector3(0.0f, 0.0f, 1500.0f);
+        public int GornjiPlanetInfoMenuDuzina = 35;
 
         public PlanetView(Planet planet, PlayerShip playerShip)
         {
-            DonjiDeoEkrana = new Rectangle(0, base.verticalSize - 100, base.horizontalSize, 100);
+            DonjiDeoEkrana = new Rectangle(0, base.verticalSize - 250, base.horizontalSize, 250);
+            GornjiDeoEkrana = new Rectangle(0, 0, base.horizontalSize, GornjiPlanetInfoMenuDuzina);
             this.planeta = planet;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(donjiMeni, DonjiDeoEkrana, Color.White);
+            spriteBatch.Draw(gornjiMeni, GornjiDeoEkrana, Color.White);
             
             planeta.Draw(spriteBatch);
             
@@ -41,7 +47,7 @@ namespace SpaceExplorer.Engine
                 // as our camera and projection.
                 foreach (BasicEffect effect in mesh.Effects)
                 {
-                    //effect.EnableDefaultLighting();
+                    effect.EnableDefaultLighting();
                     effect.World = transforms[mesh.ParentBone.Index] *
                     Matrix.CreateRotationY(modelRotation)
                     * Matrix.CreateTranslation(modelPosition);
@@ -65,7 +71,8 @@ namespace SpaceExplorer.Engine
         }
         public static void UcitajPlanetView(ContentManager content)
         {
-            donjiMeni = content.Load<Texture2D>("Models\\Gas Giant-Red copy4");
+            donjiMeni = content.Load<Texture2D>("Models\\GasGiantGreen");
+            gornjiMeni = content.Load<Texture2D>("Menus\\PlanetTopInfo");
         }
 
     }
